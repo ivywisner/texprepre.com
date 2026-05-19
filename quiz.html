@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free TX Real Estate Exam Diagnostic Quiz — TexPrep RE</title>
+  <meta name="description" content="Take our free 16-question Texas real estate exam diagnostic quiz. Find your weak spots across all 8 TREC exam topics. No email required." />
+  <link rel="icon" href="icon.png" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXX');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0F0C29;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 28px;
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-icon { width: 32px; height: 32px; border-radius: 7px; }
+    .nav-name { font-size: 17px; font-weight: 800; color: #ffffff; }
+    .nav-name span { color: #4AADDE; }
+    .nav-back {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-back:hover { color: #ffffff; }
+
+    /* ── Intro screen ── */
+    #intro {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 60px 28px;
+      text-align: center;
+    }
+    .intro-mascot {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+    }
+    #intro h1 {
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    #intro h1 span { color: #4AADDE; }
+    #intro p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .intro-pills {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 24px 0 32px;
+    }
+    .intro-pill {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+    }
+    .no-email-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 14px;
+    }
+
+    /* ── Quiz screen ── */
+    #quiz { display: none; max-width: 640px; margin: 0 auto; padding: 32px 24px 60px; }
+
+    .progress-bar-wrap {
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      height: 6px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4AADDE, #F0C030);
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+    .progress-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.40);
+      font-weight: 600;
+      text-align: right;
+      margin-bottom: 24px;
+    }
+
+    /* Streak banner */
+    .streak-banner {
+      display: none;
+      background: linear-gradient(135deg, #F0A020, #E87840);
+      border-radius: 12px;
+      padding: 10px 18px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: #1A1A2E;
+      animation: streakPop 0.4s ease;
+    }
+    @keyframes streakPop {
+      0% { transform: scale(0.85); opacity: 0; }
+      70% { transform: scale(1.04); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .streak-banner.visible { display: block; }
+
+    .topic-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #4AADDE;
+      background: rgba(74,173,222,0.12);
+      border: 1px solid rgba(74,173,222,0.25);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+    }
+
+    .question-text {
+      font-size: clamp(17px, 3vw, 22px);
+      font-weight: 700;
+      line-height: 1.45;
+      margin-bottom: 28px;
+      color: #ffffff;
+    }
+
+    .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .option-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      width: 100%;
+    }
+    .option-btn:hover:not(:disabled) {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+    }
+    .option-btn.correct {
+      background: rgba(74,222,128,0.15);
+      border-color: #4ADE80;
+      color: #4ADE80;
+    }
+    .option-btn.incorrect {
+      background: rgba(248,113,113,0.15);
+      border-color: #F87171;
+      color: #F87171;
+    }
+    .option-btn.reveal {
+      background: rgba(74,222,128,0.08);
+      border-color: rgba(74,222,128,0.30);
+      color: rgba(255,255,255,0.50);
+    }
+
+    /* Explanation box */
+    .explanation-box {
+      display: none;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.65;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .explanation-box.correct-box {
+      background: rgba(74,222,128,0.08);
+      border: 1px solid rgba(74,222,128,0.20);
+    }
+    .explanation-box.incorrect-box {
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.20);
+    }
+    .explanation-box .verdict {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .explanation-box.correct-box .verdict { color: #4ADE80; }
+    .explanation-box.incorrect-box .verdict { color: #F87171; }
+    .explanation-box .explanation-text { color: rgba(255,255,255,0.70); }
+    .explanation-box.visible { display: block; }
+
+    .next-btn {
+      width: 100%;
+      background: #4AADDE;
+      color: #0F0C29;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 15px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      display: none;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .next-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .next-btn.visible { display: block; }
+
+    /* ── Results screen ── */
+    #results {
+      display: none;
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      text-align: center;
+    }
+
+    /* Shimmer animation for low scores */
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .shimmer-wrap {
+      display: inline-block;
+      background: linear-gradient(90deg,
+        rgba(255,255,255,0.03) 0%,
+        rgba(255,255,255,0.12) 50%,
+        rgba(255,255,255,0.03) 100%);
+      background-size: 200% auto;
+      animation: shimmer 2.5s linear infinite;
+      border-radius: 20px;
+      padding: 32px 40px;
+      margin-bottom: 28px;
+      width: 100%;
+    }
+
+    .result-mascot {
+      margin-bottom: 16px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    .result-mascot.full-body {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 0;
+    }
+    .result-mascot.bust {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .score-display {
+      font-size: clamp(48px, 10vw, 72px);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .score-display.high { color: #4ADE80; }
+    .score-display.low { color: #F0C030; }
+    .score-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+
+    .result-message {
+      font-size: 17px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Topic breakdown */
+    .breakdown-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.40);
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .topic-results { display: flex; flex-direction: column; gap: 8px; margin-bottom: 36px; text-align: left; }
+    .topic-result-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+    .topic-result-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+    }
+    .topic-result-score {
+      font-size: 13px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .topic-result-score.perfect {
+      background: rgba(74,222,128,0.15);
+      color: #4ADE80;
+    }
+    .topic-result-score.partial {
+      background: rgba(240,192,48,0.15);
+      color: #F0C030;
+    }
+    .topic-result-score.zero {
+      background: rgba(248,113,113,0.15);
+      color: #F87171;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #0D3D5A, #1A6A9A);
+      border-radius: 20px;
+      padding: 28px 24px;
+      margin-bottom: 16px;
+    }
+    .cta-section h3 {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .cta-section p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      display: block;
+      background: #4AADDE;
+      color: #0F0C29;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 15px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      margin-bottom: 12px;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+    .retake-btn {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.40);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 8px;
+    }
+    .retake-btn:hover { color: rgba(255,255,255,0.70); }
+
+    /* ── Shared button ── */
+    .start-btn {
+      display: inline-block;
+      background: #4AADDE;
+      color: #0F0C29;
+      font-size: 17px;
+      font-weight: 800;
+      padding: 16px 40px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      box-shadow: 0 4px 20px rgba(74,173,222,0.35);
+    }
+    .start-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 28px;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.70); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.20); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="/">
+      <img class="nav-icon" src="icon.png" alt="TexPrep RE" />
+      <span class="nav-name">TexPrep <span>RE</span></span>
+    </a>
+    <a class="nav-back" href="/">← Back to Home</a>
+  </nav>
+
+  <!-- ── Intro ── -->
+  <div id="intro">
+    <img class="intro-mascot" src="tex-waving@2x.png" alt="TexPrep RE Mascot" />
+    <h1>Free TX Real Estate<br><span>Diagnostic Quiz</span></h1>
+    <p>Not sure how ready you are for the Texas real estate exam? This 16-question diagnostic quiz covers all 8 topics tested on the TREC exam and gives you an honest snapshot of where you currently stand.</p>
+    <p>When you're done, you'll see a topic-by-topic breakdown so you know exactly where to focus your studying.</p>
+    <p style="margin-top:10px; font-size:14px; color:rgba(255,255,255,0.45);">No email required. Results are instant.</p>
+    <div class="intro-pills">
+      <span class="intro-pill">16 questions</span>
+      <span class="intro-pill">8 exam topics</span>
+      <span class="intro-pill">Instant results</span>
+      <span class="intro-pill">No email needed</span>
+    </div>
+    <button class="start-btn" onclick="startQuiz()">Start the Quiz →</button>
+    <p class="no-email-note">Free · No sign-up · Takes about 4 minutes</p>
+  </div>
+
+  <!-- ── Quiz ── -->
+  <div id="quiz">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill" style="width: 0%"></div>
+    </div>
+    <div class="progress-label" id="progressLabel">Question 1 of 16</div>
+
+    <div class="streak-banner" id="streakBanner"></div>
+
+    <div class="topic-tag" id="topicTag"></div>
+    <div class="question-text" id="questionText"></div>
+    <div class="options" id="optionsContainer"></div>
+    <div class="explanation-box" id="explanationBox">
+      <div class="verdict" id="verdictText"></div>
+      <div class="explanation-text" id="explanationText"></div>
+    </div>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+  </div>
+
+  <!-- ── Results ── -->
+  <div id="results">
+    <div id="scoreWrap">
+      <img class="result-mascot bust" src="tex-waving@2x.png" alt="Tex" id="resultMascot" />
+      <div class="score-display" id="scoreDisplay"></div>
+      <div class="score-sub" id="scoreSub"></div>
+    </div>
+    <p class="result-message" id="resultMessage"></p>
+
+    <div class="breakdown-title">Your Topic Breakdown</div>
+    <div class="topic-results" id="topicBreakdown"></div>
+
+    <div class="cta-section">
+      <h3>Ready to go deeper? 🤠</h3>
+      <p>TexPrep RE has 1,900+ Texas-specific questions, full practice exams, flashcards, and a timed simulation — everything you need to pass the Texas real estate exam.</p>
+      <a class="cta-btn" href="https://apps.apple.com/us/app/texprep-re/id6770392741" target="_blank">⬇ Download TexPrep RE — Free</a>
+      <button class="retake-btn" onclick="retakeQuiz()">Retake the diagnostic</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://apps.apple.com/us/app/texprep-re/id6770392741" target="_blank">App Store</a>
+    </div>
+    <div class="footer-copy">© 2026 Ivy Wisner · TexPrep RE</div>
+  </footer>
+
+  <script>
+    // ── Question bank — 4 per topic, 2 randomly selected each quiz ──────────────
+    const BANK = {
+      agency: {
+        label: 'Agency & Brokerage',
+        questions: [
+          {
+            q: 'When must a Texas licensee provide the Information About Brokerage Services (IABS) form to a prospective client?',
+            options: [
+              'Only when a written representation agreement is signed',
+              'At the first substantive dialogue about a specific property',
+              'Within 24 hours of any first contact',
+              'Before the first scheduled showing of a property'
+            ],
+            correct: 1,
+            explanation: 'TREC requires licensees to provide the IABS form at the first substantive dialogue about a specific property — whether in person, by phone, or electronically. It cannot be waived by the consumer.'
+          },
+          {
+            q: 'In Texas, an "intermediary" is a broker who:',
+            options: [
+              'Acts as a neutral mediator in a dispute between buyer and seller',
+              'Represents both the buyer and seller in the same transaction with written consent from both',
+              'Represents neither party and only handles ministerial tasks',
+              'Is appointed by TREC to oversee complex transactions'
+            ],
+            correct: 1,
+            explanation: 'An intermediary is Texas\'s version of dual representation — the broker obtains written consent from both the buyer and the seller to represent both parties in the same transaction, with specific conduct restrictions.'
+          },
+          {
+            q: 'A Texas buyer\'s agent discovers a material defect in the property their client wants to purchase. The agent must:',
+            options: [
+              'Keep it confidential to avoid killing the deal',
+              'Disclose it to the buyer since the agent owes a duty of disclosure',
+              'Only disclose it if the seller\'s agent already knows about it',
+              'Let the inspector handle all disclosures'
+            ],
+            correct: 1,
+            explanation: 'A buyer\'s agent owes a duty of disclosure to their client. Known material defects — such as foundation issues or water intrusion — must be disclosed to the buyer regardless of how it might affect the deal.'
+          },
+          {
+            q: 'Under Texas minimum services law, which of the following is a required service a broker must provide to a client under a written representation agreement?',
+            options: [
+              'Finding a buyer within 30 days of listing',
+              'Presenting all offers and answering the client\'s questions about them',
+              'Providing weekly market updates and hosting open houses',
+              'Negotiating all offers to completion without client input'
+            ],
+            correct: 1,
+            explanation: 'Texas minimum services require: promptly answering client communications, presenting all offers and counteroffers promptly, and answering the client\'s questions about offers and counteroffers. These cannot be waived.'
+          }
+        ]
+      },
+      license_law: {
+        label: 'License Law & TREC',
+        questions: [
+          {
+            q: 'TREC — the Texas Real Estate Commission — is composed of:',
+            options: [
+              '6 members elected by licensed real estate professionals statewide',
+              '9 members appointed by the Governor — 6 licensed brokers and 3 public members',
+              '12 members appointed by the Texas Legislature',
+              '5 members, all of whom must be licensed real estate brokers'
+            ],
+            correct: 1,
+            explanation: 'TREC has 9 members — 6 who are licensed real estate brokers and 3 who are public (non-licensee) members. All are appointed by the Governor and confirmed by the Texas Senate.'
+          },
+          {
+            q: 'Under Texas law, commission rates charged by a real estate broker are:',
+            options: [
+              'Fixed at 6% for residential sales by TREC',
+              'Set by local real estate boards',
+              'Fully negotiable between broker and client — no legally mandated rate exists',
+              'Capped at 10% of the sales price under TRELA'
+            ],
+            correct: 2,
+            explanation: 'Commission rates in Texas are completely negotiable — there is no minimum, maximum, or standard rate set by law or TREC. Any agreement among brokers to fix rates would violate federal antitrust law.'
+          },
+          {
+            q: 'A Texas real estate salesperson license that has been expired for more than 2 years:',
+            options: [
+              'May be renewed at any time with standard CE hours and a late fee',
+              'Requires the person to apply as a new applicant and may require retaking the licensing exam',
+              'Is automatically converted to inactive status by TREC',
+              'Is permanently forfeited and can never be reinstated'
+            ],
+            correct: 1,
+            explanation: 'A license expired beyond a certain threshold — generally 2 years — may no longer qualify for simple renewal and could require the person to go through the new applicant process, including retaking the exam.'
+          },
+          {
+            q: 'For their FIRST renewal, a Texas real estate salesperson must complete:',
+            options: [
+              '18 hours of CE — the same as all subsequent renewals',
+              'Sales Apprentice Education (SAE) hours, which are significantly more extensive than standard CE',
+              'A broker mentorship program that substitutes for formal coursework',
+              'Only the Legal Update I and Legal Update II courses'
+            ],
+            correct: 1,
+            explanation: 'The first renewal requires SAE (Sales Apprentice Education) — approximately 98 hours of coursework — far exceeding the 18-hour standard CE requirement for subsequent renewals. It is designed to deepen newer licensees\' knowledge.'
+          }
+        ]
+      },
+      contracts: {
+        label: 'Contracts & Forms',
+        questions: [
+          {
+            q: 'In Texas, the "option period" in a TREC real estate contract provides the buyer with:',
+            options: [
+              'The right to renegotiate the purchase price if an inspection reveals defects',
+              'An unrestricted right to terminate the contract for any reason or no reason at all during a specified period',
+              'The right to conduct inspections — without which inspections are not permitted',
+              'A contingency period during which the buyer must identify specific reasons to terminate'
+            ],
+            correct: 1,
+            explanation: 'The Texas option period gives the buyer a completely unrestricted right to terminate — no reason is required. It is a pure termination option purchased from the seller for the option fee.'
+          },
+          {
+            q: 'The option fee in a Texas real estate transaction is paid:',
+            options: [
+              'To the title company to be held in escrow with the earnest money',
+              'Directly to the seller, typically within 3 days of the effective date of the contract',
+              'To the listing broker to be held in the brokerage trust account',
+              'To the buyer\'s agent as partial compensation for their services'
+            ],
+            correct: 1,
+            explanation: 'The option fee is paid directly to the seller — not the title company. Delivery to the wrong party can leave the buyer without an enforceable option period. This is a critical distinction from earnest money.'
+          },
+          {
+            q: 'When a Texas buyer properly terminates within the option period, the earnest money is:',
+            options: [
+              'Forfeited to the seller as compensation for removing the property from the market',
+              'Returned to the buyer since they exercised their contractual termination right',
+              'Split equally between buyer and seller',
+              'Applied toward the cost of the buyer\'s home inspection'
+            ],
+            correct: 1,
+            explanation: 'A valid termination within the option period entitles the buyer to a full refund of their earnest money. Only the option fee is retained by the seller. The option fee is the price for the exit right — it is always non-refundable.'
+          },
+          {
+            q: 'Under the TREC One to Four Family Residential Contract, who typically furnishes the owner\'s title insurance policy?',
+            options: [
+              'The buyer, since they are the one acquiring the property',
+              'The seller, unless the parties negotiate otherwise',
+              'The lender, since the title policy protects the mortgage',
+              'The title company, which provides it at no cost to either party'
+            ],
+            correct: 1,
+            explanation: 'In Texas, the seller traditionally furnishes the owner\'s title policy under the standard TREC contract. However, this is a negotiable term — in some markets or transactions, the buyer may agree to pay for it.'
+          }
+        ]
+      },
+      practice: {
+        label: 'Real Estate Practice',
+        questions: [
+          {
+            q: 'A brokerage\'s trust (escrow) account is used to:',
+            options: [
+              'Hold the broker\'s own operating funds separately from personal accounts',
+              'Hold client funds — such as earnest money and security deposits — separately from the broker\'s own funds until disbursement',
+              'Pay the broker\'s affiliated salespersons their commission splits at closing',
+              'Receive the broker\'s commission at closing and disburse funds to affiliated agents'
+            ],
+            correct: 1,
+            explanation: 'A trust account holds client funds — not the broker\'s own money. Client funds must never be mixed with the broker\'s operating or personal funds. This protects clients by ensuring their money is available for its intended purpose.'
+          },
+          {
+            q: 'Commingling of funds in real estate brokerage refers to:',
+            options: [
+              'Accepting commission from both the buyer and seller without dual agency disclosure',
+              'Improperly mixing client funds with the broker\'s personal or operating funds in the same account',
+              'Pooling multiple clients\' earnest money deposits into a single trust account',
+              'Splitting commission between a broker and their affiliated salesperson'
+            ],
+            correct: 1,
+            explanation: 'Commingling is the illegal mixing of client funds (which must be held in trust) with the broker\'s own money. This is a serious TREC violation. Maintaining separate clients\' funds in the same trust account is not commingling — that is standard practice.'
+          },
+          {
+            q: 'Price fixing in real estate brokerage is illegal because:',
+            options: [
+              'It prevents sellers from offering below-market commissions as a competitive strategy',
+              'It eliminates price competition among brokers, harming consumers by preventing them from benefiting from competitive commission rates',
+              'It inflates commission income above what the market would support',
+              'It violates MLS rules that require commission rates to be disclosed to all participants'
+            ],
+            correct: 1,
+            explanation: 'Price fixing — brokers agreeing to charge the same or minimum commission rates — is a per se violation of the Sherman Antitrust Act. It harms consumers by eliminating price competition. Brokers may set their own rates independently, but may never agree on rates with competitors.'
+          },
+          {
+            q: 'State real estate licensing authorities typically have the authority to:',
+            options: [
+              'Prosecute brokers for criminal real estate fraud — filing charges in state courts',
+              'Impose administrative sanctions including license suspension, revocation, probation, fines, and required education',
+              'Award civil damages to consumers harmed by broker misconduct',
+              'Set commission rates that brokers in the state must follow to protect consumers'
+            ],
+            correct: 1,
+            explanation: 'State real estate licensing authorities have administrative (not criminal or civil) jurisdiction. They can investigate, hold hearings, impose fines, require education, suspend, or revoke licenses. Criminal prosecution is handled by the district attorney; civil damages are awarded by courts.'
+          }
+        ]
+      },
+      ownership: {
+        label: 'Property Ownership',
+        questions: [
+          {
+            q: 'The defining feature that distinguishes joint tenancy from tenancy in common is:',
+            options: [
+              'The requirement that all joint tenants hold equal shares',
+              'The right of survivorship — when a joint tenant dies, their interest passes automatically to the surviving joint tenants rather than through the estate',
+              'The restriction that joint tenants must obtain all co-owners\' consent before conveying their interest',
+              'The requirement that all joint tenants take title through a single deed'
+            ],
+            correct: 1,
+            explanation: 'The right of survivorship is the hallmark of joint tenancy. When a joint tenant dies, their interest passes automatically to the surviving joint tenants — it cannot be devised by will. Tenancy in common has no right of survivorship.'
+          },
+          {
+            q: 'In Texas, community property with right of survivorship (CPWROS) differs from basic community property in that:',
+            options: [
+              'CPWROS requires the property to be held in a revocable living trust',
+              'CPWROS provides that upon one spouse\'s death, the deceased spouse\'s half automatically passes to the surviving spouse without probate',
+              'CPWROS converts community property into joint tenancy',
+              'CPWROS is available only for the couple\'s primary homestead'
+            ],
+            correct: 1,
+            explanation: 'Texas authorizes CPWROS by written agreement between spouses. Unlike basic community property, the surviving spouse receives the entire property without probate — and unlike joint tenancy, the full step-up in tax basis applies to the entire property, not just half.'
+          },
+          {
+            q: 'An easement appurtenant differs from an easement in gross in that an easement appurtenant:',
+            options: [
+              'Benefits a specific parcel of land and automatically transfers with that land when sold — while an easement in gross benefits a person or entity rather than adjacent land',
+              'Is a personal right held by a specific individual who cannot transfer it',
+              'Requires a written instrument to be enforceable while an easement in gross may be created orally',
+              'Allows the holder to use the burdened property for any purpose'
+            ],
+            correct: 0,
+            explanation: 'An easement appurtenant benefits a specific parcel (dominant tenement) and runs with the land — it automatically transfers when the dominant estate is sold. An easement in gross benefits a person or entity (like a utility company), not adjacent land.'
+          },
+          {
+            q: 'The Texas homestead protection against forced sale by creditors protects:',
+            options: [
+              'Up to $500,000 of equity in an urban homestead from all creditor claims including mortgages',
+              'The homestead from forced sale by most unsecured creditors — but not from foreclosure for purchase-money liens, mechanic\'s liens, home equity loans, or property taxes',
+              'All equity in the homestead from all forms of creditor claims',
+              'Up to $100,000 of the homestead\'s appraised value from property taxation'
+            ],
+            correct: 1,
+            explanation: 'Texas provides some of the strongest homestead protections in the U.S. — most unsecured creditors cannot force sale of the homestead. However, the homestead CAN be foreclosed for purchase-money liens, mechanic\'s liens, home equity loans, property taxes, and a few other exceptions.'
+          }
+        ]
+      },
+      finance: {
+        label: 'Finance & Loans',
+        questions: [
+          {
+            q: 'The deed of trust used in Texas real estate transactions involves three parties. They are:',
+            options: [
+              'Buyer, seller, and title company',
+              'Trustor (borrower), trustee, and beneficiary (lender)',
+              'Grantor, grantee, and TREC',
+              'Mortgagor, mortgagee, and guarantor'
+            ],
+            correct: 1,
+            explanation: 'A deed of trust has three parties: the trustor (borrower) who conveys the property to the trustee as security; the trustee (often a title company) who holds bare legal title; and the beneficiary (lender) who holds the note and is paid from any foreclosure proceeds.'
+          },
+          {
+            q: 'A fixed-rate mortgage is characterized by:',
+            options: [
+              'An interest rate that adjusts annually based on a financial index',
+              'An interest rate and monthly principal and interest payment that remain constant for the life of the loan',
+              'A balloon payment due after 5 to 7 years regardless of the amortization schedule',
+              'A rate fixed for the first 3 years, then adjustable annually thereafter'
+            ],
+            correct: 1,
+            explanation: 'A fixed-rate mortgage has an interest rate and principal-and-interest payment that never change over the loan\'s life. This provides payment certainty for the borrower — regardless of what happens to interest rates in the market.'
+          },
+          {
+            q: 'The purpose of the secondary mortgage market is to:',
+            options: [
+              'Provide subprime loans to borrowers who cannot qualify for conventional financing',
+              'Provide liquidity to primary lenders by purchasing their existing loans, allowing them to originate new ones',
+              'Set the interest rates that primary lenders must charge on new mortgage loans',
+              'Regulate mortgage lending practices and protect borrowers from predatory lenders'
+            ],
+            correct: 1,
+            explanation: 'The secondary mortgage market (Fannie Mae, Freddie Mac, Ginnie Mae) buys loans from primary lenders, freeing up capital so those lenders can make new loans. This liquidity is what allows a lender to make a new mortgage the same day they sell an existing one to the secondary market.'
+          },
+          {
+            q: 'A loan is described as "assumable" when:',
+            options: [
+              'The borrower can transfer the loan to a new property when they move',
+              'A new buyer can take over the seller\'s existing loan — including its interest rate and remaining balance — with lender approval',
+              'The lender assumes responsibility for the property\'s taxes and insurance through an escrow account',
+              'The borrower can assume a longer amortization period if they refinance within the first 5 years'
+            ],
+            correct: 1,
+            explanation: 'An assumable loan allows a buyer to take over the seller\'s existing mortgage — including its interest rate, remaining balance, and terms — with the lender\'s approval. This is attractive when the existing rate is lower than current market rates.'
+          }
+        ]
+      },
+      appraisal: {
+        label: 'Appraisal & Value',
+        questions: [
+          {
+            q: 'Market value in real estate appraisal is BEST defined as:',
+            options: [
+              'The price a property actually sold for in the most recent recorded transaction',
+              'The most probable price a property would bring in a competitive and open market under conditions requisite to a fair sale — with buyer and seller acting prudently and without duress',
+              'The average of the three approaches to value as reconciled by a licensed appraiser',
+              'The replacement cost of improvements minus depreciation, added to land value'
+            ],
+            correct: 1,
+            explanation: 'Market value is the most probable price — not the highest possible — in a competitive, open market where both parties are informed and acting without compulsion. This standard is used by lenders, appraisers, and courts. It differs from actual sale price, which may be above or below market value.'
+          },
+          {
+            q: 'Highest and best use is defined as the use that is:',
+            options: [
+              'The use the current owner has made of the property, which is presumed optimal',
+              'Legally permissible, physically possible, financially feasible, and maximally productive',
+              'The use that produces the highest gross income regardless of expenses or legal constraints',
+              'The most intensive use the current zoning classification permits'
+            ],
+            correct: 1,
+            explanation: 'Highest and best use must meet all four criteria in sequence: (1) legally permissible; (2) physically possible; (3) financially feasible; and (4) maximally productive — the use that produces the highest land value. This concept drives the entire appraisal analysis.'
+          },
+          {
+            q: 'The principle of substitution holds that:',
+            options: [
+              'The value of a property is determined by the sum of its individual components',
+              'A knowledgeable buyer will pay no more for a property than the cost of acquiring an equally desirable substitute property',
+              'Comparable properties will eventually sell for the same price as competition equalizes values',
+              'The highest and best use will always be the current use since changing it requires substituting a new use'
+            ],
+            correct: 1,
+            explanation: 'Substitution is the most fundamental principle in appraisal — a buyer will not pay more for a property than the cost of acquiring an equally desirable substitute. This principle underlies all three approaches to value: sales comparison, cost, and income.'
+          },
+          {
+            q: 'The three traditional approaches to value used in real estate appraisal are:',
+            options: [
+              'Comparative, reconstructive, and earnings approaches',
+              'Sales comparison, cost, and income capitalization approaches',
+              'Market approach, depreciation approach, and gross rent multiplier approach',
+              'Replacement approach, equity approach, and cash flow approach'
+            ],
+            correct: 1,
+            explanation: 'The three traditional approaches are: (1) Sales comparison — based on prices of similar recently sold properties; (2) Cost — based on the cost to replace improvements plus land value minus depreciation; (3) Income capitalization — based on the income the property produces. Appraisers apply all relevant approaches and reconcile them into a final value.'
+          }
+        ]
+      },
+      disclosures: {
+        label: 'Disclosures & Environment',
+        questions: [
+          {
+            q: 'A material fact in real estate is best defined as:',
+            options: [
+              'Any fact that the seller personally believes is important based on their experience with the property',
+              'A fact that would likely affect a reasonable person\'s decision to purchase the property or the price they would be willing to pay',
+              'Only physical defects that are visible during a walk-through inspection by a licensed home inspector',
+              'Facts that are required to be disclosed by a specific state statute, and nothing beyond that'
+            ],
+            correct: 1,
+            explanation: 'A material fact is one that a reasonable buyer would consider significant — either in their decision to purchase or the price they would offer. The standard is objective: would a reasonable person want to know this? It includes physical defects, legal issues, environmental hazards, and other value-affecting conditions.'
+          },
+          {
+            q: 'A buyer purchases a home "as-is." After closing, the buyer discovers a severe structural defect the seller knew about and did not disclose. The buyer:',
+            options: [
+              'Has no legal remedy since the as-is clause constituted acceptance of all conditions, known and unknown',
+              'Can potentially pursue claims for fraud or misrepresentation — an as-is clause does not protect a seller who knowingly concealed a material defect',
+              'Can only pursue the listing agent, since the agent is responsible for ensuring disclosures are complete',
+              'Can only pursue a claim under the warranty of habitability, which survives all as-is clauses under federal law'
+            ],
+            correct: 1,
+            explanation: 'Courts consistently hold that "as-is" provisions do not protect sellers who knowingly concealed material defects. The buyer\'s fraud claim is based on the seller\'s conduct — concealing a known defect — not on the property\'s physical condition. The as-is clause shifts risk for unknown conditions, not for the seller\'s truthfulness.'
+          },
+          {
+            q: 'Latent defects differ from patent defects in that:',
+            options: [
+              'Latent defects are covered under the seller\'s express warranty while patent defects are the buyer\'s responsibility',
+              'Latent defects are hidden and not discoverable through reasonable inspection — sellers have a duty to disclose known latent defects; patent defects are visible and observable',
+              'Latent defects only arise in new construction; patent defects are found in resale properties',
+              'Latent defects require a licensed inspector to discover while patent defects can be identified by any lay person'
+            ],
+            correct: 1,
+            explanation: 'A latent defect is hidden — not discoverable through reasonable visual inspection. Sellers must affirmatively disclose known latent defects. A patent defect is open and obvious — visible to a reasonable buyer during normal observation. Sellers\' disclosure duties focus particularly on latent defects the buyer cannot see or reasonably discover.'
+          },
+          {
+            q: 'An agent who becomes aware that their seller client has failed to disclose a known material defect should:',
+            options: [
+              'Maintain confidentiality since the duty of loyalty to the seller overrides the obligation to inform buyers',
+              'Advise the seller to make the required disclosure, and if the seller refuses, consider withdrawing from the listing',
+              'Independently disclose the defect to all prospective buyers over the seller\'s objection',
+              'Document the defect internally and allow the transaction to proceed since the inspector will find it'
+            ],
+            correct: 1,
+            explanation: 'The agent must advise the seller of their legal and ethical obligation to disclose and explain the risks of non-disclosure. If the seller still refuses, the agent may need to withdraw — continuing to market the property while knowing of an undisclosed material defect makes the agent a party to the fraud.'
+          }
+        ]
+      }
+    };
+
+    // ── State ────────────────────────────────────────────────────────────────────
+    let questions = [];
+    let current = 0;
+    let score = 0;
+    let streak = 0;
+    let answered = false;
+    let topicScores = {};
+
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function buildQuiz() {
+      questions = [];
+      topicScores = {};
+      Object.entries(BANK).forEach(([topicId, data]) => {
+        const picked = shuffle(data.questions).slice(0, 2);
+        picked.forEach(q => questions.push({ ...q, topicId, topicLabel: data.label }));
+        topicScores[topicId] = { label: data.label, correct: 0, total: 2 };
+      });
+      questions = shuffle(questions);
+    }
+
+    function startQuiz() {
+      buildQuiz();
+      current = 0;
+      score = 0;
+      streak = 0;
+      answered = false;
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('quiz').style.display = 'block';
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      answered = false;
+      const q = questions[current];
+      const total = questions.length;
+
+      // Progress
+      document.getElementById('progressFill').style.width = ((current / total) * 100) + '%';
+      document.getElementById('progressLabel').textContent = `Question ${current + 1} of ${total}`;
+
+      // Topic tag
+      document.getElementById('topicTag').textContent = q.topicLabel;
+
+      // Question
+      document.getElementById('questionText').textContent = q.q;
+
+      // Options
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt;
+        btn.onclick = () => selectAnswer(i);
+        container.appendChild(btn);
+      });
+
+      // Hide explanation + next
+      const expBox = document.getElementById('explanationBox');
+      expBox.className = 'explanation-box';
+      document.getElementById('nextBtn').className = 'next-btn';
+
+      // Hide streak banner
+      document.getElementById('streakBanner').className = 'streak-banner';
+    }
+
+    function selectAnswer(index) {
+      if (answered) return;
+      answered = true;
+
+      const q = questions[current];
+      const btns = document.querySelectorAll('.option-btn');
+      const isCorrect = index === q.correct;
+
+      // Disable all buttons
+      btns.forEach(b => b.disabled = true);
+
+      // Style selected and correct
+      btns[index].classList.add(isCorrect ? 'correct' : 'incorrect');
+      if (!isCorrect) btns[q.correct].classList.add('reveal');
+
+      // Score + streak
+      if (isCorrect) {
+        score++;
+        streak++;
+        topicScores[q.topicId].correct++;
+      } else {
+        streak = 0;
+      }
+
+      // Streak banner (show at 3+)
+      const streakBanner = document.getElementById('streakBanner');
+      if (streak >= 3) {
+        streakBanner.textContent = `🔥 ${streak} in a row! Keep it up!`;
+        streakBanner.className = 'streak-banner visible';
+      } else {
+        streakBanner.className = 'streak-banner';
+      }
+
+      // Explanation
+      const expBox = document.getElementById('explanationBox');
+      document.getElementById('verdictText').textContent = isCorrect ? '✓ Correct!' : '✗ Not quite';
+      document.getElementById('explanationText').textContent = q.explanation;
+      expBox.className = `explanation-box ${isCorrect ? 'correct-box' : 'incorrect-box'} visible`;
+
+      // Next button
+      const nextBtn = document.getElementById('nextBtn');
+      nextBtn.textContent = current + 1 < questions.length ? 'Next Question →' : 'See My Results →';
+      nextBtn.className = 'next-btn visible';
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current < questions.length) {
+        renderQuestion();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      document.getElementById('quiz').style.display = 'none';
+      document.getElementById('results').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      const total = questions.length;
+      const pct = score / total;
+      const passed = pct >= 0.70;
+
+      // Score display
+      const scoreEl = document.getElementById('scoreDisplay');
+      scoreEl.textContent = `${score} / ${total}`;
+      scoreEl.className = `score-display ${passed ? 'high' : 'low'}`;
+      document.getElementById('scoreSub').textContent = `${Math.round(pct * 100)}% correct`;
+
+      // Score wrap — shimmer for low, plain for high
+      const scoreWrap = document.getElementById('scoreWrap');
+      if (!passed) {
+        scoreWrap.className = 'shimmer-wrap';
+      }
+
+      // Result mascot image
+      const mascotEl = document.getElementById('resultMascot');
+      mascotEl.src = passed ? 'tex-celebrating@2x.png' : 'tex-encouraging@2x.png';
+      mascotEl.className = passed ? 'result-mascot full-body' : 'result-mascot bust';
+
+      // Message
+      const messages = {
+        high: [
+          "Great foundation! You clearly know your Texas real estate basics. TexPrep RE can help you go deeper on every TREC topic before test day.",
+          "Solid score! You've got a good grasp of the material. Use TexPrep RE to sharpen the topics where you slipped and lock in that passing grade.",
+          "Nice work! You're on the right track for the Texas real estate exam. Keep drilling with TexPrep RE to make sure exam day is a sure thing.",
+        ],
+        low: [
+          "Looks like you've got some ground to cover before the TREC exam — that's exactly what TexPrep RE is for. 1,900+ Texas-specific questions to get you ready.",
+          "The good news? You found your weak spots before exam day. TexPrep RE is built to tackle every topic on the Texas real estate exam.",
+          "Every expert was once a beginner. TexPrep RE is built specifically for the Texas real estate exam — download it free and start building that knowledge base.",
+        ]
+      };
+      const pool = passed ? messages.high : messages.low;
+      document.getElementById('resultMessage').textContent = pool[Math.floor(Math.random() * pool.length)];
+
+      // Topic breakdown
+      const breakdown = document.getElementById('topicBreakdown');
+      breakdown.innerHTML = '';
+      Object.values(topicScores).forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'topic-result-row';
+        const scoreClass = t.correct === 2 ? 'perfect' : t.correct === 1 ? 'partial' : 'zero';
+        const scoreText = t.correct === 2 ? '2/2 ✓' : t.correct === 1 ? '1/2' : '0/2 — Review this';
+        row.innerHTML = `
+          <span class="topic-result-name">${t.label}</span>
+          <span class="topic-result-score ${scoreClass}">${scoreText}</span>
+        `;
+        breakdown.appendChild(row);
+      });
+
+      // Confetti for 70%+
+      if (passed) {
+        setTimeout(() => {
+          confetti({ particleCount: 120, spread: 80, origin: { y: 0.5 }, colors: ['#4AADDE', '#F0C030', '#4ADE80', '#60A5FA', '#ffffff'] });
+          setTimeout(() => confetti({ particleCount: 80, spread: 100, origin: { y: 0.4 } }), 600);
+        }, 300);
+      }
+    }
+
+    function retakeQuiz() {
+      document.getElementById('results').style.display = 'none';
+      document.getElementById('scoreWrap').className = '';
+      startQuiz();
+    }
+  </script>
+
+</body>
+</html>
