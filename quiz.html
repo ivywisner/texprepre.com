@@ -933,12 +933,22 @@
       return a;
     }
 
+    function shuffleOptions(q) {
+      const opts = q.options.map((text, i) => ({ text, isCorrect: i === q.correct }));
+      const shuffled = shuffle(opts);
+      return {
+        ...q,
+        options: shuffled.map(o => o.text),
+        correct: shuffled.findIndex(o => o.isCorrect),
+      };
+    }
+
     function buildQuiz() {
       questions = [];
       topicScores = {};
       Object.entries(BANK).forEach(([topicId, data]) => {
         const picked = shuffle(data.questions).slice(0, 2);
-        picked.forEach(q => questions.push({ ...q, topicId, topicLabel: data.label }));
+        picked.forEach(q => questions.push({ ...shuffleOptions(q), topicId, topicLabel: data.label }));
         topicScores[topicId] = { label: data.label, correct: 0, total: 2 };
       });
       questions = shuffle(questions);
