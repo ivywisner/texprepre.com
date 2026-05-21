@@ -1094,8 +1094,15 @@
           "Every expert was once a beginner. TexPrep RE is built specifically for the Texas real estate exam — download it free and start building that knowledge base.",
         ]
       };
-      const pool = passed ? messages.high : messages.low;
-      document.getElementById('resultMessage').textContent = pool[Math.floor(Math.random() * pool.length)];
+
+      const msgEl = document.getElementById('resultMessage');
+      const exactScore = Math.round(pct * 100);
+      if (exactScore === 69) {
+        msgEl.innerHTML = '<strong>Nice. 😬</strong><br>You\'re one question away from passing — TexPrep RE can get you there.';
+      } else {
+        const pool = passed ? messages.high : messages.low;
+        msgEl.textContent = pool[Math.floor(Math.random() * pool.length)];
+      }
 
       // Topic breakdown
       const breakdown = document.getElementById('topicBreakdown');
