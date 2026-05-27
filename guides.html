@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texas Real Estate Exam Study Guides — TexPrep RE</title>
+  <meta name="description" content="Free study guides for the Texas real estate exam. Data-driven, TREC-specific resources to help you pass on the first try." />
+  <link rel="icon" href="icon.png" />
+  <link rel="canonical" href="https://texprepre.com/guides.html" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-60ED8LHQGK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-60ED8LHQGK');
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1C2030;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-icon { width: 36px; height: 36px; border-radius: 8px; }
+    .nav-name { font-size: 18px; font-weight: 800; color: #ffffff; }
+    .nav-name span { color: #F0C030; }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #ffffff; }
+    .nav-links a.active { color: #ffffff; }
+    .nav-download {
+      background: #E8621A !important;
+      color: #ffffff !important;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700 !important;
+    }
+    .nav-download:hover { background: #d05518 !important; }
+
+    /* ── Page header ── */
+    .page-header {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 32px 48px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #E8621A;
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .page-header h1 span { color: #E8621A; }
+    .page-header p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.65;
+      max-width: 560px;
+    }
+
+    /* ── Guides grid ── */
+    .guides-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── Guide card ── */
+    .guide-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+    }
+    .guide-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(232,98,26,0.40);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+    .guide-card-top {
+      background: linear-gradient(135deg, #E8621A, #C44A30, #8B2A5A, #F0C030);
+      padding: 28px 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .guide-card-top::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(28,32,48,0.38);
+    }
+    .guide-card-top-content { position: relative; z-index: 1; }
+    .guide-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #FFD166;
+      background: rgba(255,209,102,0.15);
+      border: 1px solid rgba(255,209,102,0.25);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .guide-card-icon { font-size: 40px; margin-bottom: 12px; }
+    .guide-card-title {
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1.25;
+      color: #ffffff;
+    }
+    .guide-card-body {
+      padding: 22px 28px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .guide-card-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.60);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 18px;
+    }
+    .guide-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .guide-card-date {
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+      font-weight: 600;
+    }
+    .guide-card-cta {
+      font-size: 13px;
+      font-weight: 800;
+      color: #E8621A;
+    }
+
+    /* ── Coming soon card ── */
+    .guide-card-soon {
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.10);
+      border-radius: 20px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 220px;
+    }
+    .soon-icon { font-size: 28px; margin-bottom: 12px; opacity: 0.35; }
+    .soon-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.20);
+      margin-bottom: 8px;
+    }
+    .soon-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.4;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 32px;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.80); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 600px) {
+      nav { padding: 12px 20px; }
+      .nav-links a:not(.nav-download) { display: none; }
+      .guides-grid { grid-template-columns: 1fr; padding: 0 20px 60px; }
+      .page-header { padding: 48px 20px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="/">
+      <img class="nav-icon" src="icon.png" alt="TexPrep RE" />
+      <span class="nav-name">TexPrep <span>RE</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="quiz.html">Free Quiz</a>
+      <a href="guides.html" class="active">Study Guides</a>
+      <a href="support.html">Support</a>
+      <a href="https://apps.apple.com/us/app/texprep-re/id6770392741" class="nav-download">Download Free ↓</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="section-label">Free Resources</div>
+    <h1>Texas Real Estate Exam <span>Study Guides</span></h1>
+    <p>Free, TREC-specific guides to help you pass on the first try. No filler — just the stuff that actually matters on exam day.</p>
+  </div>
+
+  <div class="guides-grid">
+
+    <a class="guide-card" href="hardest-topics.html">
+      <div class="guide-card-top">
+        <div class="guide-card-top-content">
+          <div class="guide-tag">TREC Data · Pass Rates</div>
+          <div class="guide-card-icon">📊</div>
+          <div class="guide-card-title">The Hardest Topics on the Texas Real Estate Exam</div>
+        </div>
+      </div>
+      <div class="guide-card-body">
+        <p class="guide-card-desc">Over half of first-time test takers fail the state portion. We break down where candidates struggle most using official TREC pass rate data — so you know exactly where to focus.</p>
+        <div class="guide-card-meta">
+          <span class="guide-card-date">May 2026</span>
+          <span class="guide-card-cta">Read guide →</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="guide-card-soon">
+      <div class="soon-icon">📋</div>
+      <div class="soon-label">Coming Soon</div>
+      <div class="soon-title">More guides on their way</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="quiz.html">Free Quiz</a>
+      <a href="guides.html">Study Guides</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://apps.apple.com/us/app/texprep-re/id6770392741" target="_blank">App Store</a>
+    </div>
+    <div class="footer-copy">© 2026 Ivy Wisner · TexPrep RE · Texas Real Estate Exam Prep</div>
+  </footer>
+
+</body>
+</html>
