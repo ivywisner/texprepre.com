@@ -355,6 +355,18 @@
       border: 1.5px solid rgba(255,255,255,0.10);
       border-radius: 20px;
       padding: 28px 24px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, opacity 0.5s ease;
+    }
+    .tier-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tier-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(232,98,26,0.40);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
     }
     .tier-card.featured {
       border-color: #E8621A;
@@ -412,6 +424,126 @@
     .tier-cta.free-cta { background: rgba(255,255,255,0.08); color: #ffffff; }
     .tier-cta.pro-cta { background: #2563EB; color: #ffffff; }
     .tier-cta.premium-cta { background: #E8621A; color: #ffffff; }
+
+    /* ── Community section ── */
+    .community-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 32px;
+    }
+    .community-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .community-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 28px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: border-color 0.15s, opacity 0.6s ease, transform 0.6s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .community-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .community-card:hover { border-color: rgba(232,98,26,0.35); }
+    .community-card.quote-card::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px;
+      right: 16px;
+      font-size: 120px;
+      font-weight: 900;
+      color: rgba(232,98,26,0.08);
+      line-height: 1;
+      pointer-events: none;
+      font-family: Georgia, serif;
+    }
+
+    /* Desktop: slide in from sides */
+    @media (min-width: 601px) {
+      .community-card.from-left {
+        transform: translateX(-40px);
+        opacity: 0;
+      }
+      .community-card.from-right {
+        transform: translateX(40px);
+        opacity: 0;
+      }
+      .community-card.from-left.visible,
+      .community-card.from-right.visible {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      /* stagger: right card delays noticeably */
+      .community-card.from-right { transition-delay: 0.35s; }
+    }
+
+    /* Mobile: stack vertically, stagger float up */
+    @media (max-width: 600px) {
+      .community-grid { grid-template-columns: 1fr; }
+      .community-card.from-left,
+      .community-card.from-right {
+        transform: translateY(28px);
+        opacity: 0;
+      }
+      .community-card.from-right { transition-delay: 0.2s; }
+    }
+
+.quote-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.7;
+      font-style: italic;
+      flex: 1;
+    }
+    .quote-source {
+      font-size: 12px;
+      font-weight: 700;
+      color: #E8621A;
+      margin-top: 16px;
+    }
+    .community-card-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .community-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #E8621A;
+      margin-bottom: 14px;
+    }
+    .community-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .community-text strong { color: #ffffff; }
+    .btn-community {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      background: #E8621A;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      align-self: flex-start;
+    }
+    .btn-community:hover { opacity: 0.85; }
 
     /* ── Tex CTA section ── */
     .tex-cta {
@@ -628,7 +760,7 @@
     <div id="pricing">
       <div class="section-label">Pricing</div>
       <h2>Start Free. <span>Upgrade When You're Ready.</span></h2>
-      <p>No subscriptions required. Pro and Premium are one-time purchases — pay once, own it forever.</p>
+      <p style="margin-bottom: 32px;">No subscriptions required. Pro and Premium are one-time purchases — pay once, own it forever.</p>
       <div class="tiers-grid">
 
         <div class="tier-card">
@@ -682,6 +814,30 @@
     </div>
   </div>
 
+  <!-- Community -->
+  <section class="community-section">
+    <div class="section-label">Community</div>
+    <h2>You're Not Studying <span>Alone</span></h2>
+    <div class="community-grid">
+
+      <div class="community-card quote-card from-left">
+        <div class="community-card-inner">
+          <p class="quote-text">The option to flag questions was a lifesaver for me. I used that along with the personalized study plan that showed me my weakest topic areas. Loved how I could review my missed questions on TexPrep RE too.</p>
+          <div class="quote-source">— r/TexasRealEstateExam · TX exam passer</div>
+        </div>
+      </div>
+
+      <div class="community-card from-right">
+        <div class="community-card-inner">
+          <div class="community-label">Join the Community</div>
+          <p class="community-text">Join <strong>r/TexasRealEstateExam</strong>, the Reddit community for Texas real estate exam candidates. Ask questions, share tips, and prep alongside fellow test takers.</p>
+          <a class="btn-community" href="https://www.reddit.com/r/TexasRealEstateExam/" target="_blank" rel="noopener">Visit r/TexasRealEstateExam →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Tex CTA -->
   <div class="tex-cta">
     <img src="icon.png" alt="TexPrep RE — Tex the Longhorn" />
@@ -708,6 +864,7 @@
   </footer>
 
   <script>
+    // Review cards — staggered float in
     const reviewCards = document.querySelectorAll('.review-card');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
@@ -718,6 +875,30 @@
       });
     }, { threshold: 0.15 });
     reviewCards.forEach(card => observer.observe(card));
+
+    // Pricing cards — staggered float in
+    const tierCards = document.querySelectorAll('.tier-card');
+    const tierObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Array.from(tierCards).indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('visible'), index * 150);
+          tierObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    tierCards.forEach(card => tierObserver.observe(card));
+
+    const communityCards = document.querySelectorAll('.community-card');
+    const communityObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          communityObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    communityCards.forEach(card => communityObserver.observe(card));
   </script>
 
 </body>
