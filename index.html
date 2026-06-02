@@ -603,6 +603,57 @@
       color: rgba(255,255,255,0.25);
     }
 
+    /* ── FAQ ── */
+    .faq-section { background: rgba(255,255,255,0.02); }
+    .faq-section > div {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 32px;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 40px; }
+    details {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    details[open] { border-color: rgba(232,98,26,0.40); }
+    details summary {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      padding: 18px 22px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: '+';
+      font-size: 20px;
+      font-weight: 400;
+      color: #E8621A;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after {
+      content: '×';
+    }
+    .faq-answer {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      padding: 0 22px 18px;
+    }
+    .faq-answer a {
+      color: #E8621A;
+      text-decoration: underline;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 600px) {
       nav { padding: 12px 20px; }
@@ -754,6 +805,72 @@
 
     </div>
   </section>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div id="faq">
+      <div class="section-label">FAQ</div>
+      <h2>Common Questions About the <span>TX Real Estate Exam</span></h2>
+      <div class="faq-list">
+
+        <details>
+          <summary>How many questions are on the Texas real estate exam?</summary>
+          <div class="faq-answer">The Texas real estate salesperson exam consists of 125 multiple-choice questions — 85 on the national portion and 40 on the state portion. You must pass both portions separately to receive your license.</div>
+        </details>
+
+        <details>
+          <summary>What score do you need to pass the Texas real estate salesperson exam?</summary>
+          <div class="faq-answer">You need a score of 70% or higher to pass the salesperson exam. (Note: the broker exam requires 75%, but TexPrep RE is designed specifically for the salesperson exam.)</div>
+        </details>
+
+        <details>
+          <summary>Is the Texas real estate exam hard?</summary>
+          <div class="faq-answer">Yes — according to TREC's early 2026 statistics, about 51% of first-time test takers fail the Texas exam. The state portion is where most people struggle, since it covers Texas-specific laws, TREC rules, and regulations that generic national study tools don't go deep on. Texas-specific preparation makes a significant difference.</div>
+        </details>
+
+        <details>
+          <summary>What's the difference between the national and state portions of the Texas exam?</summary>
+          <div class="faq-answer">The national portion covers general real estate principles — contracts, finance, property ownership, and federal law. The state portion covers Texas-specific content: TREC regulations, the Texas Real Estate License Act, agency relationships under Texas law, and state-specific promulgated forms. The state portion is where most test takers get tripped up.</div>
+        </details>
+
+        <details>
+          <summary>Is there math on the Texas real estate exam?</summary>
+          <div class="faq-answer">Yes — unlike some state exams, the Texas exam does include math questions. You can expect problems involving commission calculations, proration, and basic property valuation. The math is straightforward once you understand the formulas; it's not advanced, just unfamiliar if you haven't drilled it.</div>
+        </details>
+
+        <details>
+          <summary>How many practice questions should I do before the Texas real estate exam?</summary>
+          <div class="faq-answer">There's no magic number, but the goal is consistent exposure across all topic areas until you're scoring confidently — not just memorizing answers. TexPrep RE tracks your accuracy by topic so you always know which areas still need work before exam day.</div>
+        </details>
+
+        <details>
+          <summary>What accuracy score should I aim for before taking the TX real estate exam?</summary>
+          <div class="faq-answer">We recommend aiming for 85% or higher across all topic areas before scheduling your exam — that's the sweet spot where most test takers feel genuinely confident walking in. Anything consistently above 70% is a good sign you're on track. TexPrep RE tracks your accuracy by topic so you can see exactly where you still need work.</div>
+        </details>
+
+        <details>
+          <summary>How many times can you retake the Texas real estate exam?</summary>
+          <div class="faq-answer">You can retake the exam an unlimited number of times, but you're only given three attempts per application within your one-year eligibility period. If you don't pass within those three attempts, you'll need to fulfill additional educational requirements before you can test again.</div>
+        </details>
+
+        <details>
+          <summary>Is TexPrep RE specific to Texas?</summary>
+          <div class="faq-answer">Yes — TexPrep RE is built specifically for the Texas real estate salesperson exam, covering both the national content and the Texas-specific material tested on the TREC exam. This is not a generic national app with a Texas label on it.</div>
+        </details>
+
+        <details>
+          <summary>How is TexPrep RE different from other Texas real estate exam prep apps?</summary>
+          <div class="faq-answer">TexPrep RE is a native iOS app built exclusively for the TX exam — not a website, not a national platform. It includes 1,900+ practice questions, full length timed practice exams, 70-question practice exams with answer explanations, flashcards, personalized study plans, and lifetime pricing with no mandatory subscription.</div>
+        </details>
+
+        <details>
+          <summary>Is there a free trial?</summary>
+          <div class="faq-answer">Yes — TexPrep RE is free to download. The free tier includes 3 quiz sessions, 1 practice exam, 5 daily questions, and all flashcards. No credit card or email required.</div>
+        </details>
+
+      </div>
+    </div>
+  </div>
 
   <!-- Pricing -->
   <div class="tiers-section">
