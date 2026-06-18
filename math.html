@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texas Real Estate Exam Math: Formulas & What's Actually on the Test — TexPrep RE</title>
+  <meta name="description" content="Only 7–9 math questions on the Texas real estate exam — all on the national portion, none on state. Every formula and worked example you need to walk in confident." />
+  <meta property="og:title" content="Texas Real Estate Exam Math: Formulas & What's on the Test" />
+  <meta property="og:description" content="Is there math on the Texas real estate exam? Yes — but only about 7–9 questions. Here are the formulas, worked examples, and what you can safely skip." />
+  <meta property="og:image" content="icon.png" />
+  <link rel="icon" href="icon.png" />
+  <link rel="canonical" href="https://texprepre.com/math.html" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-60ED8LHQGK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-60ED8LHQGK');
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0F0C29;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-icon { width: 36px; height: 36px; border-radius: 8px; }
+    .nav-name { font-size: 18px; font-weight: 800; color: #ffffff; }
+    .nav-name span { color: #F0A020; }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #ffffff; }
+    .nav-download {
+      background: #F0A020 !important;
+      color: #1A1A2E !important;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700 !important;
+    }
+    .nav-download:hover { background: #D4A020 !important; }
+
+    /* ── Article Hero ── */
+    .article-hero {
+      background: linear-gradient(135deg, #3A1068, #8030A0, #D06090, #F0A020);
+      padding: 72px 32px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(15,12,41,0.35);
+    }
+    .article-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .article-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #F0A020;
+      background: rgba(240,160,32,0.12);
+      border: 1px solid rgba(240,160,32,0.25);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .article-hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    .article-hero h1 span { color: #F0A020; }
+    .article-hero-sub {
+      font-size: clamp(16px, 2.5vw, 19px);
+      color: rgba(255,255,255,0.80);
+      line-height: 1.65;
+      max-width: 580px;
+      margin: 0 auto 36px;
+    }
+    .hero-meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.40);
+    }
+
+    /* ── Stat callouts ── */
+    .stat-callout {
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 40px 32px;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .big-stat {
+      text-align: center;
+      flex: 1;
+      max-width: 240px;
+      padding: 0 28px;
+      border-right: 1px solid rgba(255,255,255,0.10);
+    }
+    .big-stat:last-child { border-right: none; }
+    .big-stat-value {
+      font-size: clamp(30px, 5vw, 44px);
+      font-weight: 900;
+      color: #F0A020;
+      line-height: 1;
+    }
+    .big-stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.50);
+      margin-top: 8px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* ── Article body ── */
+    .article-body {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 64px 32px 80px;
+    }
+
+    /* ── Prose ── */
+    .prose h2 {
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-top: 64px;
+      margin-bottom: 16px;
+    }
+    .prose h2 span { color: #E0508A; }
+    .prose h2:first-child { margin-top: 0; }
+    .prose p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.80;
+      margin-bottom: 18px;
+    }
+    .prose p strong { color: #ffffff; font-weight: 700; }
+    .prose a { color: #F0A020; }
+    .prose ul {
+      margin-left: 20px;
+      margin-bottom: 18px;
+    }
+    .prose ul li {
+      font-size: 16px;
+      color: rgba(255,255,255,0.70);
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+    .prose ul li strong { color: #ffffff; }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #F0A020;
+      margin-bottom: 10px;
+    }
+
+    /* ── Formula card ── */
+    .math-section {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .math-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .math-icon {
+      font-size: 28px;
+      width: 52px;
+      height: 52px;
+      background: rgba(240,160,32,0.10);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .math-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+    .math-subtitle {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 2px;
+      font-weight: 600;
+    }
+    .formula-box {
+      background: rgba(240,160,32,0.08);
+      border: 1px solid rgba(240,160,32,0.22);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+      font-size: 15px;
+      color: #F0A020;
+      line-height: 1.7;
+    }
+    .example-box {
+      background: rgba(255,255,255,0.04);
+      border-left: 3px solid rgba(240,160,32,0.50);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .example-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 10px;
+    }
+    .example-line {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+    }
+    .example-line strong { color: #ffffff; }
+    .example-line .result {
+      color: #F0A020;
+      font-weight: 800;
+    }
+    .math-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .math-note strong { color: rgba(255,255,255,0.65); }
+
+    /* ── Skip section ── */
+    .skip-section {
+      background: rgba(74,222,128,0.06);
+      border: 1px solid rgba(74,222,128,0.18);
+      border-radius: 20px;
+      padding: 32px;
+      margin: 48px 0;
+    }
+    .skip-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #4ADE80;
+      margin-bottom: 16px;
+    }
+    .skip-list { list-style: none; }
+    .skip-list li {
+      font-size: 15px;
+      color: rgba(255,255,255,0.70);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+    .skip-list li:last-child { border-bottom: none; }
+    .skip-check { color: #4ADE80; font-weight: 800; flex-shrink: 0; }
+
+    /* ── Calculator note ── */
+    .calculator-note {
+      background: rgba(96,165,250,0.07);
+      border: 1px solid rgba(96,165,250,0.20);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 40px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .calculator-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .calculator-text h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .calculator-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── CTA section ── */
+    .tex-cta {
+      text-align: center;
+      padding: 80px 32px;
+      background: linear-gradient(135deg, #3A1068, #8030A0, #D06090, #F0A020);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .tex-cta img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+      border-radius: 50%;
+      background: rgba(255,255,255,0.90);
+      padding: 5px;
+    }
+    .tex-cta h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .tex-cta p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.70);
+      margin-bottom: 32px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #F0A020;
+      color: #1A1A2E;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(240,160,32,0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(240,160,32,0.5); }
+    .tex-cta .hero-note {
+      margin-top: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 24px 32px;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.80); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav { padding: 12px 20px; }
+      .nav-links a:not(.nav-download) { display: none; }
+      .stat-callout { flex-wrap: wrap; padding: 28px 20px; gap: 20px; }
+      .big-stat { border-right: none; max-width: 100%; padding: 0; }
+      .article-body { padding: 40px 20px 60px; }
+      .math-section { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="/">
+      <img class="nav-icon" src="icon.png" alt="TexPrep RE" />
+      <span class="nav-name">TexPrep <span>RE</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="quiz.html">Free Quiz</a>
+      <a href="guides.html">Study Guides</a>
+      <a href="support.html">Support</a>
+      <a href="https://apps.apple.com/us/app/texprep-re/id6770392741" class="nav-download">Download Free ↓</a>
+    </div>
+  </nav>
+
+  <div class="article-hero">
+    <div class="article-hero-content">
+      <div class="article-eyebrow">Math · National Portion Only</div>
+      <h1>Texas Real Estate Exam Math: <span>Every Formula You Need</span></h1>
+      <p class="article-hero-sub">There are only 7–9 math questions on the entire Texas real estate exam — and none of them are on the state portion. A few hours with this guide and the math stops being a variable.</p>
+      <div class="hero-meta">TexPrep RE · Updated June 2026</div>
+    </div>
+  </div>
+
+  <div class="stat-callout">
+    <div class="big-stat">
+      <div class="big-stat-value">7–9</div>
+      <div class="big-stat-label">Math questions on the full exam</div>
+    </div>
+    <div class="big-stat">
+      <div class="big-stat-value">0</div>
+      <div class="big-stat-label">Math questions on the state portion</div>
+    </div>
+    <div class="big-stat">
+      <div class="big-stat-value">Basic</div>
+      <div class="big-stat-label">Calculator allowed — no financial or scientific</div>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <div class="prose">
+
+      <h2>Is There Math on the <span>Texas Real Estate Exam?</span></h2>
+      <p>Yes — but not much. Math makes up roughly <strong>8–10% of the national portion</strong>, which translates to about 7–9 questions out of 125 total. The state portion (40 questions) has no math whatsoever.</p>
+      <p>The math that does appear is straightforward — no calculus, no complex equations, no financial modeling. You're working with a handful of formulas that you can memorize in an afternoon. The goal of this guide is to show you exactly which formulas matter, walk through a real example for each, and tell you what you can safely skip.</p>
+
+      <div class="calculator-note">
+        <div class="calculator-icon">🧮</div>
+        <div class="calculator-text">
+          <h3>Calculator Policy</h3>
+          <p>You can bring a silent, battery-operated <strong>basic calculator</strong> to the testing center. Financial and scientific calculators are not allowed. A simple four-function calculator is all you need — the math on this exam is designed to be solvable with basic arithmetic.</p>
+        </div>
+      </div>
+
+      <h2>The <span>Formulas</span> That Show Up</h2>
+      <p>These are the seven math categories that appear on the national portion of the Texas real estate salesperson exam. Learn all of them — each one is fair game.</p>
+
+      <!-- Commission -->
+      <div class="math-section">
+        <div class="math-section-header">
+          <div class="math-icon">💰</div>
+          <div>
+            <div class="math-title">Commission Calculations</div>
+            <div class="math-subtitle">Most commonly tested math on the exam</div>
+          </div>
+        </div>
+        <div class="formula-box">
+          Total Commission = Sales Price × Commission Rate<br>
+          Agent's Share = Total Commission × Agent's Split %<br>
+          Broker's Share = Total Commission × Broker's Split %
+        </div>
+        <div class="example-box">
+          <div class="example-label">Worked Example</div>
+          <div class="example-line">A home sells for <strong>$380,000</strong> at a <strong>6% commission rate</strong>.</div>
+          <div class="example-line">Total commission = $380,000 × 0.06 = <span class="result">$22,800</span></div>
+          <div class="example-line">The listing agent and buyer's agent split it 50/50:</div>
+          <div class="example-line">Each side receives = $22,800 ÷ 2 = <span class="result">$11,400</span></div>
+          <div class="example-line">The listing agent is on a 70/30 split with their broker:</div>
+          <div class="example-line">Agent keeps = $11,400 × 0.70 = <span class="result">$7,980</span></div>
+        </div>
+        <div class="math-note">The exam may ask you to work this calculation in any direction — given the sales price and rate to find commission, or given the commission to find what the agent nets after splits. Practice both directions.</div>
+      </div>
+
+      <!-- Proration -->
+      <div class="math-section">
+        <div class="math-section-header">
+          <div class="math-icon">📅</div>
+          <div>
+            <div class="math-title">Proration</div>
+            <div class="math-subtitle">Dividing costs between buyer and seller at closing</div>
+          </div>
+        </div>
+        <div class="formula-box">
+          Daily Rate = Annual Amount ÷ 365<br>
+          Prorated Amount = Daily Rate × Number of Days
+        </div>
+        <div class="example-box">
+          <div class="example-label">Worked Example</div>
+          <div class="example-line">Annual property taxes are <strong>$3,650</strong>. Closing is <strong>March 31st</strong> (day 90 of the year).</div>
+          <div class="example-line">The seller owned the property for 90 days this year and must credit the buyer for that share.</div>
+          <div class="example-line">Daily rate = $3,650 ÷ 365 = <strong>$10.00/day</strong></div>
+          <div class="example-line">Seller's prorated share = $10.00 × 90 = <span class="result">$900 credit to buyer</span></div>
+        </div>
+        <div class="math-note"><strong>Texas uses a 365-day year</strong> for proration calculations — not the 360-day "banking year" used in some other states. Proration questions can involve property taxes, rent, HOA fees, or homeowner's insurance. The math is always the same: find the daily rate, then multiply by the number of days.</div>
+      </div>
+
+      <!-- Area -->
+      <div class="math-section">
+        <div class="math-section-header">
+          <div class="math-icon">📐</div>
+          <div>
+            <div class="math-title">Area &amp; Square Footage</div>
+            <div class="math-subtitle">Memorize these two numbers cold</div>
+          </div>
+        </div>
+        <div class="formula-box">
+          Area = Length × Width<br>
+          1 acre = 43,560 sq ft<br>
+          1 mile = 5,280 ft<br>
+          1 section = 640 acres
+        </div>
+        <div class="example-box">
+          <div class="example-label">Worked Example</div>
+          <div class="example-line">A rectangular lot is <strong>150 ft × 200 ft</strong>. How many acres is it?</div>
+          <div class="example-line">Area = 150 × 200 = <strong>30,000 sq ft</strong></div>
+          <div class="example-line">Acres = 30,000 ÷ 43,560 = <span class="result">0.69 acres</span></div>
+        </div>
+        <div class="math-note">You will not be given conversion factors on the exam — you need to have 43,560 and 5,280 memorized. That's non-negotiable. Everything else in this category is just multiplication and division.</div>
+      </div>
+
+      <!-- Appreciation & Depreciation -->
+      <div class="math-section">
+        <div class="math-section-header">
+          <div class="math-icon">📈</div>
+          <div>
+            <div class="math-title">Appreciation &amp; Depreciation</div>
+            <div class="math-subtitle">Value over time — and tax write-offs</div>
+          </div>
+        </div>
+        <div class="formula-box">
+          Appreciated Value = Original Value × (1 + rate)<br>
+          Depreciated Value = Original Value × (1 − rate)<br><br>
+          Annual Tax Depreciation (residential) = Building Value ÷ 27.5<br>
+          Annual Tax Depreciation (commercial) = Building Value ÷ 39
+        </div>
+        <div class="example-box">
+          <div class="example-label">Worked Example — Appreciation</div>
+          <div class="example-line">A home is worth <strong>$320,000</strong> and appreciates <strong>5%</strong> in one year.</div>
+          <div class="example-line">New value = $320,000 × 1.05 = <span class="result">$336,000</span></div>
+        </div>
+        <div class="example-box">
+          <div class="example-label">Worked Example — Tax Depreciation</div>
+          <div class="example-line">A rental property's building (not land) is worth <strong>$275,000</strong>.</div>
+          <div class="example-line">Annual depreciation = $275,000 ÷ 27.5 = <span class="result">$10,000/year</span></div>
+        </div>
+        <div class="math-note"><strong>Land is never depreciated</strong> — only the structure. If a question gives you a total property value, you may need to separate out the land value first before calculating depreciation on the building portion.</div>
+      </div>
+
+      <!-- NOI & Cap Rate -->
+      <div class="math-section">
+        <div class="math-section-header">
+          <div class="math-icon">🏢</div>
+          <div>
+            <div class="math-title">NOI &amp; Income Approach to Value</div>
+            <div class="math-subtitle">How investors value income-producing properties</div>
+          </div>
+        </div>
+        <div class="formula-box">
+          NOI = Gross Rental Income − Vacancy Loss − Operating Expenses<br>
+          Value = NOI ÷ Cap Rate<br>
+          Cap Rate = NOI ÷ Value
+        </div>
+        <div class="example-box">
+          <div class="example-label">Worked Example</div>
+          <div class="example-line">A property grosses <strong>$72,000/year</strong>. Vacancy is <strong>5%</strong>. Operating expenses are <strong>$18,000</strong>.</div>
+          <div class="example-line">Vacancy loss = $72,000 × 0.05 = $3,600</div>
+          <div class="example-line">NOI = $72,000 − $3,600 − $18,000 = <strong>$50,400</strong></div>
+          <div class="example-line">At a <strong>7% cap rate</strong>, estimated value = $50,400 ÷ 0.07 = <span class="result">$720,000</span></div>
+        </div>
+        <div class="math-note">NOI does <strong>not</strong> include mortgage payments (debt service) — that's a common trick. Operating expenses include taxes, insurance, maintenance, and management fees, but not the loan payment.</div>
+      </div>
+
+      <!-- GRM -->
+      <div class="math-section">
+        <div class="math-section-header">
+          <div class="math-icon">🏘️</div>
+          <div>
+            <div class="math-title">Gross Rent Multiplier (GRM)</div>
+            <div class="math-subtitle">Quick way to estimate a rental property's value</div>
+          </div>
+        </div>
+        <div class="formula-box">
+          GRM = Sales Price ÷ Gross Monthly Rent<br>
+          Estimated Value = GRM × Gross Monthly Rent
+        </div>
+        <div class="example-box">
+          <div class="example-label">Worked Example — Finding GRM</div>
+          <div class="example-line">A property sells for <strong>$300,000</strong> and rents for <strong>$2,000/month</strong>.</div>
+          <div class="example-line">GRM = $300,000 ÷ $2,000 = <span class="result">150</span></div>
+        </div>
+        <div class="example-box">
+          <div class="example-label">Worked Example — Estimating Value</div>
+          <div class="example-line">Similar properties in the area have a GRM of <strong>150</strong>. A subject property rents for <strong>$1,800/month</strong>.</div>
+          <div class="example-line">Estimated value = 150 × $1,800 = <span class="result">$270,000</span></div>
+        </div>
+        <div class="math-note">GRM uses <strong>gross monthly rent</strong> — not annual, and not net. Watch the question carefully for whether it says monthly or annual; if it's annual, divide by 12 first or adjust the formula accordingly.</div>
+      </div>
+
+      <!-- LTV -->
+      <div class="math-section">
+        <div class="math-section-header">
+          <div class="math-icon">🏦</div>
+          <div>
+            <div class="math-title">Loan-to-Value Ratio (LTV)</div>
+            <div class="math-subtitle">How much of the property is financed vs. owned</div>
+          </div>
+        </div>
+        <div class="formula-box">
+          LTV = Loan Amount ÷ Appraised Value<br>
+          Loan Amount = LTV % × Appraised Value<br>
+          Down Payment = Appraised Value − Loan Amount
+        </div>
+        <div class="example-box">
+          <div class="example-label">Worked Example</div>
+          <div class="example-line">A home appraises at <strong>$400,000</strong>. The buyer puts <strong>20% down</strong> (80% LTV loan).</div>
+          <div class="example-line">Loan amount = 0.80 × $400,000 = <strong>$320,000</strong></div>
+          <div class="example-line">Down payment = $400,000 − $320,000 = <span class="result">$80,000</span></div>
+        </div>
+        <div class="math-note">When the <strong>sales price is lower than the appraised value</strong>, lenders use the lower of the two to calculate LTV — a detail that can appear in exam questions. Also: LTV above 80% typically triggers a requirement for private mortgage insurance (PMI).</div>
+      </div>
+
+      <!-- What to skip -->
+      <div class="skip-section">
+        <div class="skip-title">✓ What You Can Stop Worrying About</div>
+        <ul class="skip-list">
+          <li><span class="skip-check">✓</span> Amortization schedules or monthly payment calculations — you won't need to compute these by hand</li>
+          <li><span class="skip-check">✓</span> Compound interest or time-value-of-money formulas</li>
+          <li><span class="skip-check">✓</span> Statistical analysis or appraisal regression models</li>
+          <li><span class="skip-check">✓</span> Complex tax calculations beyond basic depreciation</li>
+          <li><span class="skip-check">✓</span> Any formula that requires a financial or scientific calculator — those aren't allowed anyway</li>
+        </ul>
+      </div>
+
+      <h2>How to <span>Study the Math</span></h2>
+      <p>The biggest mistake people make is reading through formulas without actually working problems. Here's what actually works:</p>
+      <ul>
+        <li><strong>Write the formulas by hand</strong> — once per day until exam day. Muscle memory matters more than you think.</li>
+        <li><strong>Drill worked examples in both directions</strong> — if you know how to find commission from a sales price, practice finding the sales price from a commission. The exam will test you both ways.</li>
+        <li><strong>Commit 43,560 and 5,280 to memory immediately</strong> — these two numbers have to be automatic. They appear regularly and you won't be given them.</li>
+        <li><strong>Practice math questions under timed conditions</strong> — you have about 2.5 minutes per question. Math questions take longer, so drilling under pressure helps.</li>
+      </ul>
+      <p>TexPrep RE includes math questions throughout all topic-based quiz sessions, so you'll get exposure to them in the same format you'll see on test day.</p>
+
+    </div>
+  </div>
+
+  <div class="tex-cta">
+    <img src="icon.png" alt="TexPrep RE — Tex the Longhorn" />
+    <h2>Practice Makes the Math Automatic</h2>
+    <p>TexPrep RE has 1,900+ Texas-specific practice questions — including math problems across all national topics, so you're never surprised on exam day.</p>
+    <a class="btn-primary" href="https://apps.apple.com/us/app/texprep-re/id6770392741" target="_blank">
+      ⬇ Download TexPrep RE — Free
+    </a>
+    <p class="hero-note">Free to start · No credit card required · iOS</p>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="quiz.html">Free Quiz</a>
+      <a href="guides.html">Study Guides</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://apps.apple.com/us/app/texprep-re/id6770392741" target="_blank">App Store</a>
+    </div>
+    <div class="footer-copy">© 2026 Ivy Wisner · TexPrep RE · Texas Real Estate Exam Prep</div>
+  </footer>
+
+</body>
+</html>
