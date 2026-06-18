@@ -30,6 +30,13 @@
   </url>
 
   <url>
+    <loc>https://texprepre.com/math.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
     <loc>https://texprepre.com/support.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
