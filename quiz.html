@@ -267,32 +267,58 @@
       text-align: center;
     }
 
-    /* Shimmer animation for low scores */
-    @keyframes shimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-    .shimmer-wrap {
-      display: inline-block;
-      background: linear-gradient(90deg,
-        rgba(255,255,255,0.03) 0%,
-        rgba(255,255,255,0.12) 50%,
-        rgba(255,255,255,0.03) 100%);
-      background-size: 200% auto;
-      animation: shimmer 2.5s linear infinite;
+    /* ── Scorecard — the screenshot unit. Everything a Facebook crop should
+       carry lives inside its border: brand, tier, date, texprepre.com ── */
+    .scorecard {
+      position: relative;
       border-radius: 20px;
-      padding: 32px 40px;
-      margin-bottom: 28px;
-      width: 100%;
+      padding: 26px 22px 18px;
+      margin-bottom: 18px;
+      background: linear-gradient(160deg, #241d4f 0%, #1a1440 55%, #251243 100%);
+      border: 1px solid rgba(240,160,32,0.35);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+      overflow: hidden;
     }
+    .scorecard::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% -20%, rgba(240,160,32,0.18), transparent 60%);
+      pointer-events: none;
+    }
+    /* holo glint — one light sweep across the card after the score lands */
+    .scorecard::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.16) 48%, rgba(255,209,102,0.20) 52%, transparent 68%);
+      transform: translateX(-120%);
+      pointer-events: none;
+    }
+    .scorecard.glint::after { animation: glintSweep 1.1s ease-out 1; }
+    @keyframes glintSweep { to { transform: translateX(120%); } }
+
+    /* perfect score — gold trim on the same navy body (never a gold body: reads brown) */
+    .scorecard.goldcard {
+      border: 2px solid #FFD166;
+      box-shadow: 0 0 0 1px rgba(255,209,102,0.25), 0 10px 48px rgba(255,193,64,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .scorecard.goldcard::before { background: radial-gradient(circle at 50% -20%, rgba(255,209,102,0.28), transparent 60%); }
+    .scorecard.goldcard::after { background: linear-gradient(115deg, transparent 30%, rgba(255,235,180,0.22) 48%, rgba(255,209,102,0.30) 52%, transparent 68%); }
+    .scorecard.goldcard.glint::after { animation: glintSweep 1.6s ease-out 2; }
+    .scorecard.goldcard .score-display { color: #FFD166; text-shadow: 0 0 24px rgba(255,209,102,0.45); }
+
+    /* brand lockup — white wordmark + gold RE, the standard treatment */
+    .sc-brand { font-size: 17px; font-weight: 900; color: #ffffff; letter-spacing: -0.2px; margin-bottom: 3px; position: relative; }
+    .sc-brand span { color: #FFD166; }
+    .sc-eyebrow { font-size: 9.5px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 14px; position: relative; }
 
     .result-mascot {
-      margin-bottom: 16px;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+      margin-bottom: 8px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
+      position: relative;
     }
     .result-mascot.full-body {
-      width: 160px;
-      height: 160px;
+      width: 130px;
+      height: 130px;
       object-fit: contain;
       border-radius: 0;
     }
@@ -303,18 +329,64 @@
       object-fit: cover;
     }
     .score-display {
-      font-size: clamp(48px, 10vw, 72px);
+      font-size: clamp(48px, 10vw, 64px);
       font-weight: 900;
       line-height: 1;
-      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+      position: relative;
     }
     .score-display.high { color: #4ADE80; }
     .score-display.low { color: #F0A020; }
     .score-sub {
-      font-size: 16px;
+      font-size: 15px;
       color: rgba(255,255,255,0.55);
       font-weight: 600;
-      margin-bottom: 0;
+      margin-top: 4px;
+      position: relative;
+    }
+
+    /* tier pill — stamps in like a rubber stamp when the count-up lands */
+    .sc-tier {
+      display: inline-block;
+      margin-top: 12px;
+      background: rgba(255,209,102,0.13);
+      border: 1px solid rgba(255,209,102,0.4);
+      color: #FFD166;
+      font-size: 13.5px;
+      font-weight: 800;
+      border-radius: 20px;
+      padding: 6px 16px;
+      opacity: 0;
+      position: relative;
+    }
+    .sc-tier.stamp { animation: stampIn 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) forwards; }
+    @keyframes stampIn {
+      0% { transform: scale(2.4) rotate(-10deg); opacity: 0; }
+      60% { transform: scale(0.94) rotate(2deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .sc-meta {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      position: relative;
+    }
+    .sc-domain { font-weight: 800; color: rgba(255,255,255,0.5); }
+
+    .share-nudge {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 600;
+      margin-bottom: 26px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scorecard.glint::after { animation: none; }
+      .sc-tier.stamp { animation-duration: 0.01s; }
     }
 
     .result-message {
@@ -499,11 +571,16 @@
 
   <!-- ── Results ── -->
   <div id="results">
-    <div id="scoreWrap">
+    <div class="scorecard" id="scorecard">
+      <div class="sc-brand">TexPrep <span>RE</span></div>
+      <div class="sc-eyebrow">Free TX Diagnostic</div>
       <img class="result-mascot bust" src="tex-waving@2x.png" alt="Tex" id="resultMascot" />
       <div class="score-display" id="scoreDisplay"></div>
       <div class="score-sub" id="scoreSub"></div>
+      <div class="sc-tier" id="scTier"></div>
+      <div class="sc-meta"><span id="scDate"></span> · <span class="sc-domain">texprepre.com</span></div>
     </div>
+    <p class="share-nudge">📸 Screenshot it — your study group wants to know</p>
     <p class="result-message" id="resultMessage"></p>
 
     <div class="breakdown-title">Your Topic Breakdown</div>
@@ -971,6 +1048,8 @@
       answered = false;
       document.getElementById('intro').style.display = 'none';
       document.getElementById('quiz').style.display = 'block';
+      // Warm the celebrating mascot so the results reveal never flashes
+      new Image().src = 'tex-celebrating@2x.png';
       renderQuestion();
     }
 
@@ -1064,26 +1143,102 @@
       }
     }
 
+    // ── Celebration engine — "the swim" ──────────────────────────────────────
+    // Slow feather-fall confetti in the family's topic-palette rainbow.
+    // Hierarchy (Ivy's call, July 2026): PASS = endless swim only, calm and
+    // screenshot-ready at any moment. PERFECT = starburst + curtain wave +
+    // denser swim + ✨ drift + gold-trim card. No cannon arcs anywhere, no
+    // mascot emoji in the sky.
+    const CONFETTI_COLORS = ['#F0557A', '#B04FD0', '#FFD166', '#5CC94A', '#3D8BFF', '#E87840'];
+    const REDUCED_MOTION = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let swimTimer = null, sparkleTimer = null, countTimer = null;
+
+    function stopCelebration() {
+      [swimTimer, sparkleTimer, countTimer].forEach(t => t && clearInterval(t));
+      swimTimer = sparkleTimer = countTimer = null;
+      if (typeof confetti !== 'undefined' && confetti.reset) confetti.reset();
+    }
+
+    function swimDrop(count) {
+      confetti({
+        particleCount: count,
+        startVelocity: 0,
+        gravity: 0.45,
+        drift: (Math.random() - 0.5) * 1.6,
+        ticks: 500 + Math.random() * 200,
+        origin: { x: Math.random(), y: -0.05 },
+        colors: CONFETTI_COLORS,
+        scalar: 0.95,
+        disableForReducedMotion: true,
+      });
+    }
+    function starburst() {
+      confetti({
+        particleCount: 44, spread: 360, startVelocity: 16,
+        gravity: 0.4, decay: 0.93, ticks: 450,
+        origin: { x: 0.5, y: 0.35 },
+        colors: CONFETTI_COLORS,
+        disableForReducedMotion: true,
+      });
+    }
+    function curtainWave() {
+      for (let i = 0; i <= 10; i++) {
+        setTimeout(() => confetti({
+          particleCount: 4, startVelocity: 0, gravity: 0.45,
+          drift: (Math.random() - 0.5) * 1.4, ticks: 500,
+          origin: { x: i / 10, y: -0.05 },
+          colors: CONFETTI_COLORS,
+          disableForReducedMotion: true,
+        }), i * 70 + Math.random() * 60);
+      }
+    }
+    let sparkleShape = null;
+    function sparkleDrift() {
+      try {
+        if (!sparkleShape) sparkleShape = confetti.shapeFromText({ text: '✨', scalar: 2.4 });
+        confetti({
+          shapes: [sparkleShape], scalar: 2.4, particleCount: 1,
+          startVelocity: 0, gravity: 0.35,
+          drift: (Math.random() - 0.5) * 1.4, ticks: 550,
+          origin: { x: Math.random(), y: -0.05 },
+          disableForReducedMotion: true,
+        });
+      } catch (e) { /* shapeFromText unsupported → skip sparkles, never break results */ }
+    }
+
+    // Tier titles — an identity to share, not just a fraction (16 questions)
+    const TIERS = [
+      [16, 'Perfect Score 👑'],
+      [14, '🤠 Top of the Herd'],
+      [12, '⚡ Exam-Ready Energy'],
+      [8,  '📈 Building Momentum'],
+      [0,  '🌱 Day One — Everyone Starts Here'],
+    ];
+    function tierFor(s) { for (const [min, label] of TIERS) if (s >= min) return label; }
+
     function showResults() {
       document.getElementById('quiz').style.display = 'none';
       document.getElementById('results').style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      stopCelebration();
 
       const total = questions.length;
       const pct = score / total;
       const passed = pct >= 0.70;
+      const perfect = score === total;
 
-      // Score display
+      // Scorecard state
+      const card = document.getElementById('scorecard');
+      card.classList.remove('glint');
+      card.classList.toggle('goldcard', perfect);
       const scoreEl = document.getElementById('scoreDisplay');
-      scoreEl.textContent = `${score} / ${total}`;
       scoreEl.className = `score-display ${passed ? 'high' : 'low'}`;
       document.getElementById('scoreSub').textContent = `${Math.round(pct * 100)}% correct`;
-
-      // Score wrap — shimmer for low, plain for high
-      const scoreWrap = document.getElementById('scoreWrap');
-      if (!passed) {
-        scoreWrap.className = 'shimmer-wrap';
-      }
+      const tierEl = document.getElementById('scTier');
+      tierEl.classList.remove('stamp');
+      tierEl.textContent = tierFor(score);
+      document.getElementById('scDate').textContent =
+        new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
       // Result mascot image
       const mascotEl = document.getElementById('resultMascot');
@@ -1092,6 +1247,9 @@
 
       // Message
       const messages = {
+        perfect: [
+          "A perfect diagnostic — genuinely rare. Frame it, share it, then make exam day just as sure with TexPrep RE's 1,900+ questions.",
+        ],
         high: [
           "Great foundation! You clearly know your Texas real estate basics. TexPrep RE can help you go deeper on every TREC topic before test day.",
           "Solid score! You've got a good grasp of the material. Use TexPrep RE to sharpen the topics where you slipped and lock in that passing grade.",
@@ -1109,7 +1267,7 @@
       if (exactScore === 69) {
         msgEl.innerHTML = '<strong>Nice. 😬</strong><br>You\'re one question away from passing — TexPrep RE can get you there.';
       } else {
-        const pool = passed ? messages.high : messages.low;
+        const pool = perfect ? messages.perfect : passed ? messages.high : messages.low;
         msgEl.textContent = pool[Math.floor(Math.random() * pool.length)];
       }
 
@@ -1128,18 +1286,41 @@
         breakdown.appendChild(row);
       });
 
-      // Confetti for 70%+
-      if (passed) {
-        setTimeout(() => {
-          confetti({ particleCount: 120, spread: 80, origin: { y: 0.5 }, colors: ['#4AADDE', '#F0A020', '#4ADE80', '#60A5FA', '#ffffff'] });
-          setTimeout(() => confetti({ particleCount: 80, spread: 100, origin: { y: 0.4 } }), 600);
-        }, 300);
+      // The reveal: count up → tier stamps in → glint sweeps → celebration
+      const land = () => {
+        tierEl.classList.add('stamp');
+        setTimeout(() => card.classList.add('glint'), 250);
+        if (passed && !REDUCED_MOTION) {
+          if (perfect) {
+            starburst();
+            setTimeout(curtainWave, 700);
+            sparkleTimer = setInterval(sparkleDrift, 1100);
+          }
+          // The swim — endless; screenshot any moment and there's color in frame
+          swimTimer = setInterval(() => swimDrop(perfect ? 3 : 2), 240);
+        }
+      };
+      if (REDUCED_MOTION || score === 0) {
+        scoreEl.textContent = `${score} / ${total}`;
+        land();
+      } else {
+        let n = 0;
+        scoreEl.textContent = `0 / ${total}`;
+        countTimer = setInterval(() => {
+          n++;
+          scoreEl.textContent = `${n} / ${total}`;
+          if (n >= score) {
+            clearInterval(countTimer);
+            countTimer = null;
+            land();
+          }
+        }, 90);
       }
     }
 
     function retakeQuiz() {
+      stopCelebration();
       document.getElementById('results').style.display = 'none';
-      document.getElementById('scoreWrap').className = '';
       startQuiz();
     }
   </script>
