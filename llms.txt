@@ -1,0 +1,24 @@
+# TexPrep RE
+
+> Free Texas real estate exam prep — study guides, a free practice quiz, and the TexPrep RE iOS app with 1,900+ TREC-specific practice questions.
+
+Facts on these pages are verified against primary sources (DRE / TREC / DBPR / Pearson VUE) and dated. Fee and format figures reflect the current schedules as of the date shown on each page.
+
+## Study guides & exam facts
+
+- [Hardest Texas Real Estate Exam Topics (TREC Data)](https://texprepre.com/hardest-topics.html): Over half of first-time test takers fail the Texas real estate exam. We break down the hardest TX TREC exam topics by official pass rate data — so you know exactly where to focus.
+- [Texas Real Estate Exam Math: Formulas & What's Actually on the Test](https://texprepre.com/math.html): Only 7–9 math questions on the Texas real estate exam — all on the national portion, none on state. Key formulas, worked examples, and what you can safely skip — so you walk in confident.
+- [I Failed the Texas Real Estate Exam](https://texprepre.com/fail.html): Failed the Texas real estate exam? Here's exactly how the retake works — the $43 fee, the one-year/three-attempt window, why you only retake the portion you failed, and how to pass next time.
+- [Texas Real Estate Exam Vocabulary: 50 Terms You Need to Know](https://texprepre.com/vocab.html): The 50 most-tested Texas real estate exam terms — from IABS and intermediary representation to the rule of capture — with plain-English, exam-focused definitions organized by topic.
+- [Free Texas Real Estate Practice Questions](https://texprepre.com/practice-questions.html): 20 free Texas real estate exam practice questions with answers and explanations — covering license law, agency, contracts, finance, appraisal, and more. National + state portions, no email required.
+- [How Many Questions Is the Texas Real Estate Exam? Format, Time Limit & Passing Score](https://texprepre.com/exam-facts.html): The Texas real estate sales agent exam is 125 questions (85 national + 40 state, plus unscored pretest items) with a 4-hour total time limit — you need 70% on each portion. Full format, fees, and retake rules.
+- [How Much Does It Cost to Get a Texas Real Estate License? (2026 Fee Breakdown)](https://texprepre.com/cost.html): Expect $590–$1,290 all-in: $300–$1,000 for the required 180-hour courses, $206 TREC application, $43 exam fee, and $37 fingerprinting. Full itemized fee table inside.
+
+## Interactive
+
+- [Free Texas Real Estate Practice Exam](https://texprepre.com/quiz.html): Take our free 16-question Texas real estate practice exam. Find your weak spots across key TREC exam topics and see exactly where to focus your studying. No email required.
+- [Texas Real Estate Exam Study Guides](https://texprepre.com/guides.html): Free TX real estate exam study guides. Data-driven, Texas TREC-specific resources to help you pass on the first try.
+
+## App
+
+- [TexPrep RE on the App Store](https://texprepre.com/): iOS app with 1,900+ state-specific practice questions, flashcards, and timed exam simulations.
