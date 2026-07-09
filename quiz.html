@@ -1167,7 +1167,7 @@
         drift: (Math.random() - 0.5) * 1.6,
         ticks: 500 + Math.random() * 200,
         origin: { x: Math.random(), y: -0.05 },
-        colors: CONFETTI_COLORS,
+        colors: shuffle(CONFETTI_COLORS),
         scalar: 0.95,
         disableForReducedMotion: true,
       });
@@ -1177,7 +1177,7 @@
         particleCount: 44, spread: 360, startVelocity: 16,
         gravity: 0.4, decay: 0.93, ticks: 450,
         origin: { x: 0.5, y: 0.35 },
-        colors: CONFETTI_COLORS,
+        colors: shuffle(CONFETTI_COLORS),
         disableForReducedMotion: true,
       });
     }
@@ -1187,7 +1187,7 @@
           particleCount: 4, startVelocity: 0, gravity: 0.45,
           drift: (Math.random() - 0.5) * 1.4, ticks: 500,
           origin: { x: i / 10, y: -0.05 },
-          colors: CONFETTI_COLORS,
+          colors: shuffle(CONFETTI_COLORS),
           disableForReducedMotion: true,
         }), i * 70 + Math.random() * 60);
       }
