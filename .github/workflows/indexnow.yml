@@ -30,7 +30,7 @@ jobs:
           set -e
           if [ "$EVENT" = "workflow_dispatch" ]; then
             # Manual run: submit every URL in the sitemap
-            URLS=$(grep -o '<loc>[^<]*</loc>' sitemap.xml | sed 's|</\?loc>||g')
+            URLS=$(grep -o '<loc>[^<]*</loc>' sitemap.xml | sed -e 's|<loc>||g' -e 's|</loc>||g')
           else
             if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BEFORE" 2>/dev/null; then
               BEFORE=$(git rev-parse "$SHA~1")
