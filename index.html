@@ -457,6 +457,7 @@
       transform: translateY(0);
     }
     .community-card:hover { border-color: rgba(224,80,138,0.35); }
+    .community-card.fb-card { grid-column: 1 / -1; }
     .community-card.quote-card::before {
       content: '\201C';
       position: absolute;
@@ -487,6 +488,7 @@
       }
       /* stagger: right card delays noticeably */
       .community-card.from-right { transition-delay: 0.35s; }
+      .community-card.fb-card { transition-delay: 0.55s; }
     }
 
     /* Mobile: stack vertically, stagger float up */
@@ -503,6 +505,7 @@
         transform: translateY(0);
       }
       .community-card.from-right { transition-delay: 0.2s; }
+      .community-card.fb-card { transition-delay: 0.4s; }
     }
 
 .quote-text {
@@ -1194,6 +1197,14 @@
           <div class="community-label">Join the Community</div>
           <p class="community-text">Join <strong>r/TexasRealEstateExam</strong>, the Reddit community for Texas real estate exam candidates. Ask questions, share tips, and prep alongside fellow test takers.</p>
           <a class="btn-community" href="https://www.reddit.com/r/TexasRealEstateExam/" target="_blank" rel="noopener">Visit r/TexasRealEstateExam →</a>
+        </div>
+      </div>
+
+      <div class="community-card fb-card">
+        <div class="community-card-inner">
+          <div class="community-label">Facebook Study Group</div>
+          <p class="community-text">Prefer Facebook? Join the <strong>Real Estate Exam Prep &amp; Study Group</strong> &mdash; daily practice questions, exam-day recaps, and study support from candidates in every state, Texas included.</p>
+          <a class="btn-community" href="https://www.facebook.com/groups/realestateexamprepgroup/" target="_blank" rel="noopener">Join the Facebook Group →</a>
         </div>
       </div>
 
