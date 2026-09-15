@@ -24,4 +24,4 @@ Facts on these pages are verified against primary sources (DRE / TREC / DBPR / P
 
 ## App
 
-- [TexPrep RE on the App Store](https://texprepre.com/): iOS app with 1,900+ state-specific practice questions, flashcards, and timed exam simulations.
+- [TexPrep RE on the App Store](https://texprepre.com/): iOS app with 1,900+ state-specific practice questions, topic quizzes, flashcards, practice tests, and full-length timed practice exams.
