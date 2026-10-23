@@ -390,6 +390,35 @@
     .tier-badge.free { background: rgba(255,255,255,0.10); color: rgba(255,255,255,0.6); }
     .tier-badge.pro { background: rgba(96,165,250,0.15); color: #60A5FA; }
     .tier-badge.premium { background: rgba(224,80,138,0.15); color: #E0508A; }
+    .badge-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .sale-pill {
+      display: none;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      background: rgba(255,209,102,0.12);
+      border: 1px solid rgba(255,209,102,0.45);
+      color: #FFD166;
+      box-shadow: 0 0 12px rgba(255,209,102,0.15);
+    }
+    .tier-price .anchor {
+      display: none;
+      font-size: 16px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.32);
+      text-decoration: line-through;
+      text-decoration-thickness: 1.5px;
+      margin-right: 8px;
+    }
+    .tier-freq .sale-only { display: none; }
+    .tier-freq .sale-word { color: #FFD166; }
+    body.sale-active .sale-pill { display: inline-block; }
+    body.sale-active .tier-price .anchor { display: inline; }
+    body.sale-active .tier-freq .sale-only { display: inline; }
     .tier-price {
       font-size: 32px;
       font-weight: 900;
@@ -1147,9 +1176,12 @@
         </div>
 
         <div class="tier-card">
-          <span class="tier-badge pro">Pro</span>
-          <div class="tier-price">$15.99</div>
-          <div class="tier-freq">one-time · sale price</div>
+          <div class="badge-row">
+            <span class="tier-badge pro">Pro</span>
+            <span class="sale-pill">Sale</span>
+          </div>
+          <div class="tier-price"><span class="anchor">$17.99</span>$15.99</div>
+          <div class="tier-freq">one-time<span class="sale-only"> · <span class="sale-word">sale price</span></span></div>
           <ul class="tier-features">
             <li><span class="check">✓</span> Unlimited quizzes</li>
             <li><span class="check">✓</span> Unlimited practice exams</li>
@@ -1163,9 +1195,12 @@
         </div>
 
         <div class="tier-card featured">
-          <span class="tier-badge premium">Premium ★ Best Value</span>
-          <div class="tier-price">$21.99</div>
-          <div class="tier-freq">one-time · sale price · or $9.99/week</div>
+          <div class="badge-row">
+            <span class="tier-badge premium">Premium ★ Best Value</span>
+            <span class="sale-pill">Sale</span>
+          </div>
+          <div class="tier-price"><span class="anchor">$24.99</span>$21.99</div>
+          <div class="tier-freq">one-time<span class="sale-only"> · <span class="sale-word">sale price</span></span> · or $9.99/week</div>
           <ul class="tier-features">
             <li><span class="check">✓</span> Everything in Pro</li>
             <li><span class="check">✓</span> Full-length timed exams</li>
@@ -1360,6 +1395,7 @@
 
       function render() {
         const sale = activeSale();
+        document.body.classList.toggle('sale-active', !!sale);
         if (!sale) {
           bar.classList.remove('active');
           if (timer) { clearInterval(timer); timer = null; }
