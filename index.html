@@ -920,8 +920,8 @@
 
   <!-- Sale bar (revealed by JS while a sale in the calendar is active) -->
   <div class="sale-bar" id="saleBar">
-    <!-- ⚠️ Bar hidden while calendar is empty. Before adding a new sale entry, verify these prices match the actual promo (full prices since Oct 2026: $17.99/$24.99). -->
-    <div><span class="sale-label" id="saleName"></span>&nbsp; <span class="sale-copy">Pro $17.99 · Premium $24.99 — one-time, keep it forever</span></div>
+    <!-- ⚠️ Sale calendar ACTIVE (Oct 23, 2026): bar shows sale prices $15.99/$21.99; full/anchor prices are $17.99/$24.99. Calendar ends Jan 4, 2027 — decide then: revert Tex to full prices or extend. -->
+    <div><span class="sale-label" id="saleName"></span>&nbsp; <span class="sale-copy">Pro $15.99 · Premium $21.99 — one-time, keep it forever</span></div>
     <div class="sale-timer">
       <span class="sale-ends">Ends in</span>
       <span class="sale-num" id="saleD">–</span><span class="sale-unit">days</span>
@@ -1148,7 +1148,7 @@
 
         <div class="tier-card">
           <span class="tier-badge pro">Pro</span>
-          <div class="tier-price">$17.99</div>
+          <div class="tier-price">$15.99</div>
           <div class="tier-freq">one-time</div>
           <ul class="tier-features">
             <li><span class="check">✓</span> Unlimited quizzes</li>
@@ -1164,7 +1164,7 @@
 
         <div class="tier-card featured">
           <span class="tier-badge premium">Premium ★ Best Value</span>
-          <div class="tier-price">$24.99</div>
+          <div class="tier-price">$21.99</div>
           <div class="tier-freq">one-time · or $9.99/week</div>
           <ul class="tier-features">
             <li><span class="check">✓</span> Everything in Pro</li>
@@ -1328,15 +1328,22 @@
     // Honest-clock rules: same deadline for every visitor, never resets on
     // refresh, bar disappears at zero. No fake urgency, no strikethrough prices.
     const SALES = [
-      { name: '☀️ Summer Sale', end: '2026-07-13T06:59:59Z' }, // ends Sun July 12, 11:59 PM PT
-      { name: '🌞 Midsummer Sale', end: '2026-07-18T06:59:59Z' }, // ends Fri July 17, 11:59 PM PT
-      { name: '🌊 Heat Wave Sale', end: '2026-07-23T06:59:59Z' }, // ends Wed July 22, 11:59 PM PT
-      { name: '🐕 Dog Days Sale', end: '2026-08-02T06:59:59Z' }, // ends Sat Aug 1, 11:59 PM PT
-      { name: '⛱️ Beach Week Sale', end: '2026-08-09T06:59:59Z' }, // ends Sat Aug 8, 11:59 PM PT
-      { name: '🍉 Peak Summer Sale', end: '2026-08-16T06:59:59Z' }, // ends Sat Aug 15, 11:59 PM PT
-      { name: '🎒 Back-to-School Sale', end: '2026-09-03T06:59:59Z' }, // ends Wed Sep 2, 11:59 PM PT
-      { name: '🇺🇸 Labor Day Sale', end: '2026-09-08T06:59:59Z' }, // ends Mon Sep 7 (Labor Day), 11:59 PM PT — summer sale ENDED here; prices raised Sep 8, 2026
-      // Calendar empty = bar stays hidden. Add future entries to run a new sale.
+      { name: '🍬 Trick-or-Treat Sale', end: '2026-10-28T06:59:59Z' }, // ends Tue Oct 27, 11:59 PM PT
+      { name: '🎃 Halloween Sale', end: '2026-11-01T06:59:59Z' }, // ends Sat Oct 31 (Halloween), 11:59 PM PT — last PDT entry
+      { name: '🕰️ Fall Back Sale', end: '2026-11-06T07:59:59Z' }, // ends Thu Nov 5, 11:59 PM PT (PST from here on)
+      { name: '🇺🇸 Veterans Day Sale', end: '2026-11-12T07:59:59Z' }, // ends Wed Nov 11 (Veterans Day), 11:59 PM PT
+      { name: '🧣 Cozy Season Sale', end: '2026-11-17T07:59:59Z' }, // ends Mon Nov 16, 11:59 PM PT
+      { name: '🥧 Pie Season Sale', end: '2026-11-22T07:59:59Z' }, // ends Sat Nov 21, 11:59 PM PT
+      { name: '🦃 Thanksgiving Sale', end: '2026-11-27T07:59:59Z' }, // ends Thu Nov 26 (Thanksgiving), 11:59 PM PT
+      { name: '🛍️ Black Friday Sale', end: '2026-11-28T07:59:59Z' }, // ends Fri Nov 27 (Black Friday), 11:59 PM PT — one-day sale
+      { name: '💻 Cyber Monday Sale', end: '2026-12-01T07:59:59Z' }, // ends Mon Nov 30 (Cyber Monday), 11:59 PM PT
+      { name: '❄️ December Kickoff Sale', end: '2026-12-06T07:59:59Z' }, // ends Sat Dec 5, 11:59 PM PT
+      { name: '🎓 Finals Season Sale', end: '2026-12-11T07:59:59Z' }, // ends Thu Dec 10, 11:59 PM PT
+      { name: '🎁 Gift Yourself Sale', end: '2026-12-16T07:59:59Z' }, // ends Tue Dec 15, 11:59 PM PT
+      { name: '⛄ First Day of Winter Sale', end: '2026-12-22T07:59:59Z' }, // ends Mon Dec 21 (winter solstice), 11:59 PM PT
+      { name: '🎄 Christmas Sale', end: '2026-12-26T07:59:59Z' }, // ends Fri Dec 25 (Christmas), 11:59 PM PT
+      { name: '⏳ Year-End Sale', end: '2026-12-31T07:59:59Z' }, // ends Wed Dec 30, 11:59 PM PT
+      { name: '🥂 New Year, New Career Sale', end: '2027-01-05T07:59:59Z' }, // ends Mon Jan 4, 11:59 PM PT — LAST sale; bar self-removes after
     ];
 
     (function () {
